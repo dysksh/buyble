@@ -25,8 +25,7 @@ class TextbookController extends Controller
      */
     public function create()
     {
-        $textbook = new TextBook;
-        return view('textbooks/create', ['textbook' => $textbook]);
+        //
     }
 
     /**
