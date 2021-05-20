@@ -9,7 +9,7 @@ class HomeController extends Controller
     public function index()
     {
         $user = \Auth::user();
-        return view('home/index', ['user' => $user]);
+        return view('home/index');
     }
     public function admin()
     {
