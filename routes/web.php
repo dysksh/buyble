@@ -17,3 +17,4 @@ Auth::routes([
     'confirm' => false,
 ]);
 Route::get('home', 'HomeController@index')->name('home');
+Route::resource('textbooks', 'TextbookController');
