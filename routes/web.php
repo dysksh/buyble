@@ -17,3 +17,6 @@ Auth::routes([
     'confirm' => false,
 ]);
 Route::get('home', 'HomeController@index')->name('home');
+
+Route::put('user/edit', 'Admin\UserController@update')->name('users.update');
+Route::get('user/edit', 'Admin\UserController@edit')->name('users.edit');
