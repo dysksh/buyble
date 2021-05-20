@@ -9,18 +9,11 @@
 </head>
 <body>
 <h1>buyble管理画面</h1>
-<ul style="list-style: none; padding-left: 0;"> 
-<li style="text-align:center"><input type="button" onclick="" value="教科書一覧"></li>
-<li style="text-align:center"><input type="button" onclick="" value="会員管理"></li>
-
-<li style="text-align:center">
-    <form action="{{ route('logout') }}" name="logout" method="post">
+<p><a href="{{ route('home') }}">教科書一覧</a></p>
+<p><a href="{{ route('home') }}">会員管理</a></p>
+<form action="{{ route('logout') }}" name="logout" method="post">
       <input type="submit" value="ログアウト">
-    </form>
-</li>
-</ul>
-
-
+</form>
 
     
 </body>

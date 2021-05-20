@@ -16,4 +16,5 @@ Auth::routes([
     'reset' => false,
     'confirm' => false,
 ]);
-Route::get('home', 'HomeController@admin')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
+Route::get('admin', 'HomeController@admin')->name('admin');
