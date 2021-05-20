@@ -14,7 +14,8 @@ class TextbookController extends Controller
      */
     public function index()
     {
-        //
+        $textbooks = TextBook::all();
+        return view('textbooks/index' , ['textbooks' => $textbooks]);
     }
 
     /**
