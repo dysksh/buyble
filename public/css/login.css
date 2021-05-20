@@ -1,0 +1,47 @@
+h1 {
+    color: #90ee90;
+    font-size: 55px;
+    letter-spacing: 0.07em;
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+.login-text {
+    letter-spacing: 0.05em;
+    font-size: 40px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+
+body {
+    margin: 0 auto;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+p.logo1 img {
+    position: relative; top:0;
+    width: 8%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 80px;
+}
+
+
+
+.btn {
+    background-color:#90ee90;
+    box-shadow: 4px 4px 1px #005731;
+    color: #fff;
+
+}
+
+  header {
+      display: none;
+  }
+
+  div {
+      margin-top: 30px;
+  }

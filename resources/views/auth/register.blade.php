@@ -1,7 +1,12 @@
+@push('css')
+    <link href="{{ asset('css/register.css') }}" rel="stylesheet">
+@endpush
 @extends('layouts.app')
 
 @section('content')
-<h1>会員登録</h1>
+<div>
+<p class="logo1"><img src="/img/ロゴ１/ロゴ1.jpg" alt="ロゴ"></p>
+<h1>{{ config('app.name') }}会員登録</h1>
 @include('commons/flash')
 <form action="{{ route('register') }}" method="post">
     @csrf
@@ -34,11 +39,12 @@
         <input type="password" name="password_confirmation" value="">
     </p>
     <p>
-        <button type="submit">登録</button>
+    <p id=""><a href="" class="btn btn--red btn--radius btn--cubic">登録<i class="fas fa-angle-right fa-position-right"></i></a></p>
     </p>
     <p>または</p>
     <p>
         <a href="{{ route('login') }}">ログイン</a>
     </p>
 </form>
+</div>
 @endsection
