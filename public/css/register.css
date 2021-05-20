@@ -1,0 +1,78 @@
+h1 {
+    color: #90ee90;
+    font-size: 55px;
+    letter-spacing: 0.07em;
+    text-align: center;
+    font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+p {
+    text-align: center;
+}
+
+.login-text {
+    letter-spacing: 0.05em;
+    font-size: 40px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c');
+
+body {
+    margin: 0 auto;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+p.logo1 img {
+    position: relative; top:0;
+    width: 8%;
+    height: auto;
+    margin: 0 auto;
+}
+
+
+
+.btn {
+    background-color:#90ee90;
+    box-shadow: 4px 4px 1px #005731;
+    color: #fff;
+
+}
+
+a.btn--red.btn--cubic {
+   /* border-bottom: 5px solid #9f000c; */
+  }
+  
+  a.btn--red.btn--cubic:hover {
+    /*border-bottom: 2px solid #9f000c;*/
+  }
+  
+  a.btn--radius {
+    border-radius: 100vh;
+  }
+  
+  .fa-position-right {
+    position: absolute;
+    top: calc(50% - .5em);
+    right: 1rem;
+  }
+
+  #redbtn {
+      text-align: left;
+  }
+
+  input {
+      border: 1px solid #90ee90;
+  }
+
+  input:focus {
+      border: 1px solid #90ee90;
+      outline: 0;
+  }
+
+  header {
+      display: none;
+  }
+
+  div {
+    margin-top: 100px;
+}
