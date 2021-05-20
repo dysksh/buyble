@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function admin()
     {
-        return view('home/index');
+        return view('home/admin');
     }
 }
