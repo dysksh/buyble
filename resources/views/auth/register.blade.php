@@ -39,6 +39,7 @@
         <input type="password" name="password_confirmation" value="">
     </p>
     <p>
+    <button type="submit">登録</button>
     <p id=""><a href="" class="btn btn--red btn--radius btn--cubic">登録<i class="fas fa-angle-right fa-position-right"></i></a></p>
     </p>
     <p>または</p>

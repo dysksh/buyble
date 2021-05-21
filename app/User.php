@@ -38,9 +38,9 @@ class User extends Authenticatable
     ];
 
     public function bought() {
-        return $this->hasMany(Textbook::class);
+        return $this->hasMany(Textbook::class, 'buyer_id');
     }
     public function registered() {
-        return $this->hasMany(Textbook::class);
+        return $this->hasMany(Textbook::class, 'seller_id');
     }
 }
