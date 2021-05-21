@@ -19,9 +19,9 @@ Auth::routes([
 Route::group(['middleware' => ['auth']], function () {
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('admin', 'HomeController@admin')->name('admin');
-  
-    Route::get('users', 'Admin\UserController@index')->name('users.index');
+    Route::get('register_history', 'HomeController@register_history')->name('register_history');
     Route::put('user/edit', 'Admin\UserController@update')->name('users.update');
     Route::get('user/edit', 'Admin\UserController@edit')->name('users.edit');
     Route::resource('textbooks', 'TextbookController');
+
 });
