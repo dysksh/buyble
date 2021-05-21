@@ -12,6 +12,7 @@
      <th>売り手ユーザID</th>
  </tr>
 </thead>
+
 <tbody>
   @foreach($textbooks as $textbook)
   <tr>
@@ -24,4 +25,7 @@
      <td>{{ $textbook->seller_id }}</td>
   </tr> 
   @endforeach
+  </tbody>
  </table> 
+ <p><a href="{{ route('textbooks.create') }}">+教科書登録</a></p>
+ 
