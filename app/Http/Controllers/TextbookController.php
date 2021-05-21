@@ -12,9 +12,28 @@ class TextbookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $textbooks = TextBook::all();
+        $query = \App\Textbook::select('id', 'title', 'author', 'classification', 'price', 'isbn_no', 'seller_id');
+        if ($request->isbn_no) {
+            $query->where('isbn_no', '=', $request->isbn_no);
+        }
+        if ($request->price_min) {
+            $query->where('price', '>=', $request->price_min);
+        }
+        if ($request->price_max) {
+            $query->where('price', '<=', $request->price_max);
+        }
+        if ($request->title) {
+            $query->where('title', 'LIKE', '%'.$request->title.'%');
+        }
+        if ($request->author) {
+            $query->where('author', 'LIKE', '%'.$request->author.'%');
+        }
+        if ($request->classification || $request->classification==='0') {
+            $query->where('classification', $request->classification);
+        }
+        $textbooks = $query->paginate(20);
         return view('textbooks/index' , ['textbooks' => $textbooks]);
     }
 
@@ -49,7 +68,7 @@ class TextbookController extends Controller
      */
     public function show(Textbook $textbook)
     {
-        //
+        return view('textbooks.show', ['textbook' => $textbook]);
     }
 
     /**
