@@ -9,7 +9,11 @@ use Illuminate\Support\Facades\Auth; //追加
 
 class UserController extends Controller
 {
-    //下記を追加
+    // 会員管理
+    public function index() {
+        $users = User::where('id', '<>', 1)->orderBy('created_at', 'desc')->paginate(20);;
+        return view('user.index', ['users' => $users]);
+    }
 
     //userデータの編集
     public function edit() {
@@ -29,4 +33,18 @@ class UserController extends Controller
         return redirect(route('users.edit', $user));
     }
 
+    public function delete(User $user)
+    {
+        $user = Auth::user();
+        return view('user.delete', ['user' => $user]);
+    }
+
+    public function destroy(User $user)
+    {
+        $user = Auth::user();
+        Auth::logout();
+        $user->delete();
+
+        return view('auth.login');
+    }
 }
