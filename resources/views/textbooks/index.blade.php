@@ -1,5 +1,33 @@
 <h1>教科書一覧</h1>
 
+
+<form action="{{ route('textbooks.index') }}">
+   @csrf
+   @method('get')
+   <dl>
+      <dt>ISBN番号</dt>
+      <dd><input type="text" name="isbn_no" placeholder="ISBN番号" value="{{ request('isbn_no') }}"></dd>
+      <dt>タイトル</dt>
+      <dd><input type="text" name="title" placeholder="タイトル" value="{{ request('title') }}"></dd>
+      <dt>分類</dt>
+      <dd>
+         <select name="classification" id="">
+            @if (!request('classification'))
+               <option hidden></option>
+            @endif
+            @for ($i=0; $i < 11; $i++)
+               <option value="{{ $i }}"<?= request('classification')===strval($i) ? 'selected': "" ?>>{{ $i }}</option>
+            @endfor
+         </select>
+      </dd>
+      <dt>著者名</dt>
+      <dd><input type="text" name="author" placeholder="著者名" value="{{ request('author') }}"></dd>
+      <dt>売値</dt>
+      <dd><input type="number" name="price_min" placeholder="円" value="{{ request('price_min') }}">～<input type="number" name="price_max" placeholder="円" value="{{ request('price_max') }}"></dd>
+      <button type="submit">検索</button>
+   </dl>
+</form>
+
 <table class="table">
 <thead>
   <tr>
@@ -25,7 +53,7 @@
      <td>{{ $textbook->seller_id }}</td>
   </tr> 
   @endforeach
-  </tbody>
- </table> 
+</tbody>
+</table>
+{{ $textbooks->links() }}
  <p><a href="{{ route('textbooks.create') }}">+教科書登録</a></p>
- 
