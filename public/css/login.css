@@ -29,19 +29,15 @@ p.logo1 img {
     margin-top: 80px;
 }
 
-
-
-.btn {
-    background-color:#90ee90;
-    box-shadow: 4px 4px 1px #005731;
-    color: #fff;
-
-}
-
   header {
       display: none;
   }
 
   div {
       margin-top: 30px;
+  }
+
+  .log-btn {
+      width: 150px;
+      text-align: center;
   }

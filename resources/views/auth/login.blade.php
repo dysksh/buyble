@@ -18,8 +18,7 @@
         <label for="">パスワード</label><br>
         <input type="password" name="password" value="">
     </p>
-    <p><button type="submit">ログイン</button></p>
-    <p><a href="" class="btn btn--red btn--radius btn--cubic">ログイン<i class="fas fa-angle-right fa-position-right"></i></a></p>
+    <p><button class="log-btn" type="submit">ログイン</button></p>
     <p>または</p>
     <p>
         <a href="{{ route('register') }}">会員登録</a>   
