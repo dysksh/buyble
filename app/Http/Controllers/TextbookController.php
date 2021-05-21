@@ -37,7 +37,7 @@ class TextbookController extends Controller
      */
     public function store(Request $request)
     {
-        $book = $request->user()->registered()->create($request->all());
+        $textbook = $request->user()->registered()->create($request->all());
     }
 
     /**
