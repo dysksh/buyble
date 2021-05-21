@@ -40,11 +40,12 @@
      <th>売り手ユーザID</th>
  </tr>
 </thead>
+
 <tbody>
   @foreach($textbooks as $textbook)
   <tr>
      <td>{{ $textbook->id }}</td>
-     <td>{{ $textbook->title }}</td>
+     <td><a href="{{ route('textbooks.show', $textbook) }}">{{ $textbook->title }}</a></td>
      <td>{{ $textbook->author }}</td>
      <td>{{ $textbook->classification }}</td>
      <td>{{ $textbook->price }}</td>
@@ -52,5 +53,7 @@
      <td>{{ $textbook->seller_id }}</td>
   </tr> 
   @endforeach
+</tbody>
 </table>
 {{ $textbooks->links() }}
+ <p><a href="{{ route('textbooks.create') }}">+教科書登録</a></p>

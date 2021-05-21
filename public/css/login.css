@@ -38,6 +38,28 @@ p.logo1 img {
 
 }
 
+a.btn--red.btn--cubic {
+   /* border-bottom: 5px solid #9f000c; */
+  }
+  
+  a.btn--red.btn--cubic:hover {
+    /*border-bottom: 2px solid #9f000c;*/
+  }
+  
+  a.btn--radius {
+    border-radius: 100vh;
+  }
+  
+  .fa-position-right {
+    position: absolute;
+    top: calc(50% - .5em);
+    right: 1rem;
+  }
+
+  #redbtn {
+      text-align: left;
+  }
+
   header {
       display: none;
   }

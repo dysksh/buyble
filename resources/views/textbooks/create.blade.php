@@ -3,7 +3,7 @@
 @section('content')
 <h1>教科書登録画面</h1>
 
-<form action="{{ route('textbooks.create') }}" method="post">
+<form action="{{ route('textbooks.store') }}" method="post">
 @csrf 
 <dl>
    <dt>ISBN番号</dt>
