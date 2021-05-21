@@ -47,4 +47,18 @@ class UserController extends Controller
 
         return view('auth.login');
     }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        return view('user.show', ['user'=>$user]);
+    }
+
+    public function admindestroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect(route('users.index'));
+    }
 }

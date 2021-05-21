@@ -15,7 +15,7 @@
             <tr>
                 <td>{{ $user->id}}</td>
                 <td>
-                    <a href="{{ route('users.index') }}">
+                    <a href="{{ route('users.show', $user->id) }}">
                         {{ $user->name }}
                     </a>
                 </td>
