@@ -38,6 +38,7 @@ class TextbookController extends Controller
     public function store(Request $request)
     {
         $textbook = $request->user()->registered()->create($request->all());
+        return redirect(route('home'));
     }
 
     /**
