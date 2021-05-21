@@ -33,4 +33,32 @@ class UserController extends Controller
         return redirect(route('users.edit', $user));
     }
 
+    public function delete(User $user)
+    {
+        $user = Auth::user();
+        return view('user.delete', ['user' => $user]);
+    }
+
+    public function destroy(User $user)
+    {
+        $user = Auth::user();
+        Auth::logout();
+        $user->delete();
+
+        return view('auth.login');
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        return view('user.show', ['user'=>$user]);
+    }
+
+    public function admindestroy($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect(route('users.index'));
+    }
 }
