@@ -25,4 +25,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('textbooks', 'TextbookController');
     Route::get('user/delete', 'Admin\UserController@delete')->name('users.delete');
     Route::put('user/delete', 'Admin\UserController@destroy')->name('users.destroy');
+    Route::get('user/{id}', 'Admin\UserController@show')->name('users.show');
+    Route::put('user/{id}', 'Admin\UserController@admindestroy')->name('users.admindestroy');
 });
