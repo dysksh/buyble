@@ -14,7 +14,7 @@ class TextbookController extends Controller
      */
     public function index(Request $request)
     {
-        $query = \App\Textbook::select('id', 'title', 'author', 'classification', 'price', 'isbn_no', 'seller_id');
+        $query = \App\Textbook::select('id', 'title', 'author', 'classification_id', 'price', 'isbn_no', 'seller_id');
         if ($request->isbn_no) {
             $query->where('isbn_no', '=', $request->isbn_no);
         }
@@ -30,11 +30,12 @@ class TextbookController extends Controller
         if ($request->author) {
             $query->where('author', 'LIKE', '%'.$request->author.'%');
         }
-        if ($request->classification || $request->classification==='0') {
-            $query->where('classification', $request->classification);
+        if ($request->classification_id || $request->classification_id==='0') {
+            $query->where('classification_id', $request->classification_id);
         }
         $textbooks = $query->paginate(20);
-        return view('textbooks/index' , ['textbooks' => $textbooks]);
+        $classifications = \App\Classification::all();
+        return view('textbooks/index' , ['textbooks' => $textbooks, 'classifications' => $classifications]);
     }
 
     /**
@@ -45,7 +46,9 @@ class TextbookController extends Controller
     public function create()
     {
         $textbook = new TextBook;
-        return view('textbooks/create', ['textbook' => $textbook]);
+        $classifications = \App\Classification::all();
+        $conditions = \App\Condition::all();
+        return view('textbooks/create', ['textbook' => $textbook, 'classifications' => $classifications, 'conditions' => $conditions]);
     }
 
     /**

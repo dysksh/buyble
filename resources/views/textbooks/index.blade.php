@@ -11,13 +11,13 @@
       <dd><input type="text" name="title" placeholder="タイトル" value="{{ request('title') }}"></dd>
       <dt>分類</dt>
       <dd>
-         <select name="classification" id="">
-            @if (!request('classification'))
+         <select name="classification_id" id="">
+            @if (!request('classification_id'))
                <option hidden></option>
             @endif
-            @for ($i=0; $i < 11; $i++)
-               <option value="{{ $i }}"<?= request('classification')===strval($i) ? 'selected': "" ?>>{{ $i }}</option>
-            @endfor
+            @foreach ($classifications as $classification)
+                <option value="{{ $classification->id }}"<?= request('classification_id')===strval($classification->id) ? 'selected': "" ?>>{{ $classification->name }}</option>
+            @endforeach
          </select>
       </dd>
       <dt>著者名</dt>
@@ -47,7 +47,7 @@
      <td>{{ $textbook->id }}</td>
      <td><a href="{{ route('textbooks.show', $textbook) }}">{{ $textbook->title }}</a></td>
      <td>{{ $textbook->author }}</td>
-     <td>{{ $textbook->classification }}</td>
+     <td>{{ $textbook->classification->name }}</td>
      <td>{{ $textbook->price }}</td>
      <td>{{ $textbook->isbn_no }}</td>
      <td>{{ $textbook->seller_id }}</td>
