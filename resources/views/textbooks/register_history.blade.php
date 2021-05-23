@@ -14,7 +14,7 @@
   <tr>
      <td>{{ $textbook->title }}</td>
      <td>{{ $textbook->author }}</td>
-     <td>{{ $textbook->condition }}</td>
+     <td>{{ $textbook->condition->name }}</td>
      <td>{{ $textbook->price }}</td>
   </tr> 
   @endforeach
