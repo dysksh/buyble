@@ -107,6 +107,7 @@ class TextbookController extends Controller
      */
     public function destroy(Textbook $textbook)
     {
-        //
+        $textbook->delete();
+        return redirect(route('textbooks.index'));
     }
 }
