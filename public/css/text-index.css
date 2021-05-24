@@ -17,11 +17,14 @@ dl {
 
 thead {
     margin: 30px auto;
-
 }
 
 .txt-reg {
     margin: 50px auto;
+}
+
+.create-textbook-btn {
+    width: 25%;
 }
 
 .idx-log {

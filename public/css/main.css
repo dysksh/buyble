@@ -52,3 +52,10 @@ button:focus {
     border: 1px solid #90ee90;
       outline: 0;
 }
+
+.user-btn {
+    margin: 20px auto 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

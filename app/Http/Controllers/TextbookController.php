@@ -62,7 +62,7 @@ class TextbookController extends Controller
     {
         $textbook = $request->user()->registered()->create($request->all());
         $this->authorize($textbook);
-        return redirect(route('home'));
+        return redirect(route('textbooks.index'));
     }
 
     /**
