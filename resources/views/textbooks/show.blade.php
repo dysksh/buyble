@@ -15,7 +15,14 @@
   <dt>売値</dt>
   <dd>{{ $textbook->price }}</dd>    
 </dl>
-<a href="">購入</a>
+@if (\Auth::id()!==$textbook->seller_id && \Auth::id()!==1 && !$textbook->purchased_at)
+  <form action="{{ route('purchase', $textbook->id) }}" method="post">
+    @csrf 
+    @method('put')
+    <button type="submit">購入</button>
+  </form>
+@endif
+
 <a href="">編集</a>
 <a href="">削除</a>
 @endsection
