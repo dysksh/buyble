@@ -73,7 +73,7 @@
                                 <input type="text" name="price" value="{{ $textbook->price }}">
                                 </div>
                             </div>    
-                            <button type="submit">更新</button>
+                            <button type="submit" class="user-btn">更新</button>
                             </form>
                        </div>
                   </div>

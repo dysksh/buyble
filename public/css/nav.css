@@ -9,11 +9,11 @@ header{
   color: #90ee90;
 }
 
-ul{
+.navigation{
     list-style: none;
 }
 
-li{
+.navigation li{
     margin: 0 0 0 15px;
     font-size: 14px;
 }
