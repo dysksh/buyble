@@ -16,6 +16,6 @@
   <dd>{{ $textbook->price }}</dd>    
 </dl>
 <a href="">購入</a>
-<a href="">編集</a>
+<a href="{{ route('textbooks.edit', $textbook->id) }}">編集</a>
 <a href="">削除</a>
 @endsection
