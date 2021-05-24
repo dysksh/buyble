@@ -19,7 +19,7 @@
   @foreach($textbooks as $textbook)
   <div class="txt-data">
   <tr>
-     <td>{{ $textbook->title }}</td>
+     <td><a href="{{ route('textbooks.show', $textbook) }}">{{ $textbook->title }}</a></td>
      <td>{{ $textbook->author }}</td>
      <td>{{ $textbook->purchased_at }}</td>
   </tr> 
