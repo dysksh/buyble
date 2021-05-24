@@ -9,9 +9,9 @@
   <dt>著者名</dt>
   <dd>{{ $textbook->author }}</dd>
   <dt>分類</dt>
-  <dd>{{ $textbook->classification }}</dd>
+  <dd>{{ $textbook->classification->name }}</dd>
   <dt>状態</dt>
-  <dd>{{ $textbook->condition }}</dd>
+  <dd>{{ $textbook->condition->name }}</dd>
   <dt>売値</dt>
   <dd>{{ $textbook->price }}</dd>    
 </dl>

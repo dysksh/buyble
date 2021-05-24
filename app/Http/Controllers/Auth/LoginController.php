@@ -41,7 +41,7 @@ class LoginController extends Controller
         if (\Auth::id() === 1) {
             return route('admin');
         } else {
-            return route('home');
+            return route('textbooks.index');
         }
     }
 }
