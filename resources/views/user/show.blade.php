@@ -26,24 +26,23 @@
         <dd>{{ $user->created_at }}</dd>
     </dl>
 
-    @if (\Auth::id() === 1)
+    @if (\Auth::id() === 1 && $user->id !== 1)
         <a href="{{ route('users.adedit', $user->id) }}">編集</a>
-    @else
-        <a href="{{ route('users.edit') }}">編集</a>
     @endif
 
-
-    <a href="" onclick="deleteUser()">削除</a>
-    <form action="{{ route('users.admindestroy', $user->id) }}" method="POST"  id="delete-form">
-        @csrf
-        @method('put')
-    </form>
-    <script type="text/javascript">
-        function deleteUser(){
-            event.preventDefault();
-            if (window.confirm('すべての会員情報が削除されます。よろしいですか？')){
-                document.getElementById('delete-form').submit();
+    @if (\Auth::id() === 1 && $user->id !== 1)
+        <a href="" onclick="deleteUser()">削除</a>
+        <form action="{{ route('users.admindestroy', $user->id) }}" method="POST"  id="delete-form">
+            @csrf
+            @method('delete')
+        </form>
+        <script type="text/javascript">
+            function deleteUser(){
+                event.preventDefault();
+                if (window.confirm('すべての会員情報が削除されます。よろしいですか？')){
+                    document.getElementById('delete-form').submit();
+                }
             }
-        }
-    </script>
+        </script>
+    @endif
 @endsection

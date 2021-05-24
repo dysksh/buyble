@@ -46,6 +46,7 @@ class TextbookController extends Controller
     public function create()
     {
         $textbook = new TextBook;
+        $this->authorize($textbook);
         $classifications = \App\Classification::all();
         $conditions = \App\Condition::all();
         return view('textbooks/create', ['textbook' => $textbook, 'classifications' => $classifications, 'conditions' => $conditions]);
@@ -60,6 +61,7 @@ class TextbookController extends Controller
     public function store(Request $request)
     {
         $textbook = $request->user()->registered()->create($request->all());
+        $this->authorize($textbook);
         return redirect(route('home'));
     }
 
@@ -82,6 +84,7 @@ class TextbookController extends Controller
      */
     public function edit(Textbook $textbook)
     {
+        $this->authorize($textbook);
         $classifications = \App\Classification::all();
         $conditions = \App\Condition::all();
         return view('textbooks.edit', ['textbook' => $textbook,'classifications' => $classifications, 'conditions' => $conditions ]);
@@ -96,6 +99,7 @@ class TextbookController extends Controller
      */
     public function update(Request $request, Textbook $textbook)
     {
+        $this->authorize($textbook);
         $textbook->update($request->all());
         return redirect(route('textbooks.show', $textbook->id));
     }
@@ -108,6 +112,7 @@ class TextbookController extends Controller
      */
     public function destroy(Textbook $textbook)
     {
+        $this->authorize($textbook);
         $textbook->delete();
         return redirect(route('textbooks.index'));
     }
