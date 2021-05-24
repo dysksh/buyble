@@ -21,16 +21,35 @@ class UserController extends Controller
         return view('user.edit', ['user' => $user]);
     }
 
+    //admin用userデータの編集
+    public function adedit($id) {
+        $user = User::find($id);
+        return view('user.edit', ['user' => $user]);
+    }
+
     //userデータの保存
     public function update(Request $request) {
-        $user_form = $request->all();
-        $user = Auth::user();
-        //不要な「_token」の削除
-        unset($user_form['_token']);
-        //保存
-        $user->fill($user_form)->save();
-        //リダイレクト
-        return redirect(route('users.edit', $user));
+            $user_form = $request->all();
+            $user = Auth::user();
+            //不要な「_token」の削除
+            unset($user_form['_token']);
+            //保存
+            $user->fill($user_form)->save();
+            //リダイレクト
+            return redirect(route('users.edit', $user));
+    }
+
+    //admin用userデータの保存
+    public function adupdate(Request $request) {
+            $user = User::find($request->id);
+            //dd($user);
+            $user_form = $request->all();
+            //不要な「_token」の削除
+            unset($user_form['_token']);
+            //保存
+            $user->fill($user_form)->save();
+            //リダイレクト
+            return redirect(route('users.show', $user));
     }
 
     public function delete(User $user)
