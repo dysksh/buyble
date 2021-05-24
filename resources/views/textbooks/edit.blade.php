@@ -14,9 +14,21 @@
   <dt>著者名</dt>
   <dd><input type="text" name="author" value="{{ $textbook->author }}"></dd>
   <dt>分類</dt>
-  <dd><input type="text" name="classification" value="{{ $textbook->classification }}"></dd>
+  <dd>
+        <select name="classification_id" id="">
+            @foreach ($classifications as $classification)
+                <option value="{{ $classification->id }}"<?= $textbook->classification_id===$classification->id ? 'selected': "" ?>>{{ $classification->name }}</option>
+            @endforeach
+        </select>
+  </dd>
   <dt>状態</dt>
-  <dd><input type="text" name="condition" value="{{ $textbook->condition }}"></dd>
+  <dd>
+        <select name="condition_id" id="">
+            @foreach ($conditions as $condition)
+                <option value="{{ $condition->id }}"<?= $textbook->condition_id===$condition->id ? 'selected': "" ?>>{{ $condition->name }}</option>
+            @endforeach
+        </select>
+  </dd>
   <dt>売値</dt>
   <dd><input type="text" name="price" value="{{ $textbook->price }}"></dd>    
 </dl>

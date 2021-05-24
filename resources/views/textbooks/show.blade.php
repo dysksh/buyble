@@ -26,5 +26,17 @@
   </form>
 @endif
 <a href="{{ route('textbooks.edit', $textbook->id) }}">編集</a>
-<a href="">削除</a>
+<a href="" onclick="deleteTextbook()">削除</a>
+    <form action="{{ route('textbooks.destroy', $textbook) }}" method="POST"  id="delete-form">
+        @csrf
+        @method('delete')
+    </form>
+    <script type="text/javascript">
+        function deleteTextbook(){
+            event.preventDefault();
+            if (window.confirm('教科書情報が削除されます。よろしいですか？')){
+                document.getElementById('delete-form').submit();
+            }
+        }
+    </script>
 @endsection

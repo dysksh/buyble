@@ -82,8 +82,9 @@ class TextbookController extends Controller
      */
     public function edit(Textbook $textbook)
     {
-        //$textbook = \App\Textbook::find($request->id);
-        return view('textbooks.edit', ['textbook' => $textbook]);
+        $classifications = \App\Classification::all();
+        $conditions = \App\Condition::all();
+        return view('textbooks.edit', ['textbook' => $textbook,'classifications' => $classifications, 'conditions' => $conditions ]);
     }
 
     /**
@@ -107,6 +108,7 @@ class TextbookController extends Controller
      */
     public function destroy(Textbook $textbook)
     {
-        //
+        $textbook->delete();
+        return redirect(route('textbooks.index'));
     }
 }
