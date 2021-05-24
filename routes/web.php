@@ -28,4 +28,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('user/delete', 'Admin\UserController@destroy')->name('users.destroy');
     Route::get('user/{id}', 'Admin\UserController@show')->name('users.show');
     Route::put('user/{id}', 'Admin\UserController@admindestroy')->name('users.admindestroy');
+    
 });

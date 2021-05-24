@@ -60,7 +60,8 @@ class TextbookController extends Controller
      */
     public function edit(Textbook $textbook)
     {
-        //
+        //$textbook = \App\Textbook::find($request->id);
+        return view('textbooks.edit', ['textbook' => $textbook]);
     }
 
     /**
@@ -72,7 +73,8 @@ class TextbookController extends Controller
      */
     public function update(Request $request, Textbook $textbook)
     {
-        //
+        $textbook->update($request->all());
+        return redirect(route('textbooks.show', $textbook->id));
     }
 
     /**
