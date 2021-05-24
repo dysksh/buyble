@@ -17,7 +17,7 @@
   <dd>
         <select name="classification_id" id="">
             @foreach ($classifications as $classification)
-                <option value="{{ $classification->id }}"<?= request('classification_id')===strval($classification->id) ? 'selected': "" ?>>{{ $classification->name }}</option>
+                <option value="{{ $classification->id }}"<?= $textbook->classification_id===$classification->id ? 'selected': "" ?>>{{ $classification->name }}</option>
             @endforeach
         </select>
   </dd>
@@ -25,7 +25,7 @@
   <dd>
         <select name="condition_id" id="">
             @foreach ($conditions as $condition)
-                <option value="{{ $condition->id }}"<?= request('condition_id')===strval($condition->id) ? 'selected': "" ?>>{{ $condition->name }}</option>
+                <option value="{{ $condition->id }}"<?= $textbook->condition_id===$condition->id ? 'selected': "" ?>>{{ $condition->name }}</option>
             @endforeach
         </select>
   </dd>
