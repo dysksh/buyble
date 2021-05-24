@@ -20,6 +20,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('admin', 'HomeController@admin')->name('admin');
     Route::get('register_history', 'HomeController@register_history')->name('register_history');
+    Route::put('purchase/{id}', 'HomeController@purchase')->name('purchase');
+    Route::get('purchase_history', 'HomeController@purchase_history')->name('purchase_history');
     Route::get('users', 'Admin\UserController@index')->name('users.index');
     Route::put('user/edit', 'Admin\UserController@update')->name('users.update');
     Route::get('user/edit', 'Admin\UserController@edit')->name('users.edit');
