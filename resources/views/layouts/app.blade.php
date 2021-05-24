@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="container header">
-            <a class="brand" href="/">
+            <a class="brand header-a"  href="/">
                 <img src="/img/logo1.jpg" alt="ロゴ" width="25%" height="25%">{{ config('app.name') }}
             </a>
             @include('commons/nav')
