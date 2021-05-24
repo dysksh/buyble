@@ -1,8 +1,14 @@
 @if (Auth::check())
     <ul class="navigation">
-        <li>
-            <a href="{{ route('home') }}">マイページ</a>
-        </li>
+        @if (\Auth::id() === 1)
+            <li>
+                <a href="{{ route('admin') }}">管理者画面</a>
+            </li>
+        @else
+            <li>
+                <a href="{{ route('home') }}">マイページ</a>
+            </li>
+        @endif
         <li>
             <a href="" onclick="logout()">
                 ログアウト

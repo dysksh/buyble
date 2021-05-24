@@ -7,12 +7,15 @@
     <title>{{ config('app.name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/nav.css">
     @stack('css')
 </head>
 <body>
     <header>
-        <div class="container">
-            <a class="brand" href="/">{{ config('app.name') }}</a>
+        <div class="container header">
+            <a class="brand" href="/">
+                <img src="/img/logo1.jpg" alt="ロゴ" width="25%" height="25%">{{ config('app.name') }}
+            </a>
             @include('commons/nav')
         </div>
     </header>
