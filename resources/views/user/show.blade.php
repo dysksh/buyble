@@ -26,7 +26,12 @@
         <dd>{{ $user->created_at }}</dd>
     </dl>
 
-    <a href="{{ route('users.show', $user->id) }}">編集</a>
+    @if (\Auth::id() === 1)
+        <a href="{{ route('users.adedit', $user->id) }}">編集</a>
+    @else
+        <a href="{{ route('users.edit') }}">編集</a>
+    @endif
+
 
     <a href="" onclick="deleteUser()">削除</a>
     <form action="{{ route('users.admindestroy', $user->id) }}" method="POST"  id="delete-form">

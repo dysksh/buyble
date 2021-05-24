@@ -8,7 +8,11 @@
                 <div class="card-header">会員登録情報変更画面</div>
                     <div class="card-body">
                         @include('commons.flash')
-                        <form method="POST" action="{{ route('users.update') }}">
+                        @if (\Auth::id() === 1)
+                            <form method="POST" action="{{ route('users.adupdate', $user->id ) }}">
+                        @else
+                            <form method="POST" action="{{ route('users.update') }}">
+                        @endif
                             @csrf
                             @method('put')
                             <div class="form-group">
