@@ -1,3 +1,6 @@
+@push('css')
+    <link href="{{ asset('css/show.css') }}" rel="stylesheet">
+@endpush
 @extends('layouts.app')
 @section('content')
 <h1>書籍情報</h1>
