@@ -1,8 +1,16 @@
+@push('css')
+    <link href="{{ asset('css/user.show.css') }}" rel="stylesheet">
+@endpush
 @extends('layouts.app')
-
+@include('commons.flash')
 @section('content')
 <h1>{{ $user->name }}詳細</h1>
-@include('commons.flash')
+<div class="container m-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">会員詳細情報</div>
+          <div class="card-body">
     <dl>
         <dt>ID</dt>
         <dd>{{ $user->id }}</dd>
@@ -27,11 +35,11 @@
     </dl>
 
     @if (\Auth::id() === 1 && $user->id !== 1)
-        <a href="{{ route('users.adedit', $user->id) }}">編集</a>
+        <a href="{{ route('users.adedit', $user->id) }}"><button class="btn-user" type="submit">編集</button></a>
     @endif
 
     @if (\Auth::id() === 1 && $user->id !== 1)
-        <a href="" onclick="deleteUser()">削除</a>
+        <a href="" onclick="deleteUser()"><button type="submit">削除</button></a>
         <form action="{{ route('users.admindestroy', $user->id) }}" method="POST"  id="delete-form">
             @csrf
             @method('delete')
@@ -45,4 +53,11 @@
             }
         </script>
     @endif
+    
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>    
 @endsection
