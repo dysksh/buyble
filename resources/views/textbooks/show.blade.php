@@ -22,7 +22,13 @@
               <dt>状態</dt>
               <dd>{{ $textbook->condition->name }}</dd>
               <dt>売値</dt>
-              <dd>{{ $textbook->price }}</dd>    
+              <dd>{{ $textbook->price }}</dd> 
+              <dt>画像</dt>
+              @if ($textbook->file_name)
+                <img src="../../uploads/{{ $textbook->file_name }}" width="200px" height="auto">
+              @else
+                <img src="../../uploads/noimage.jpg" width="200px" height="auto">
+              @endif
             </dl>          
 
             @if (\Auth::id()!==$textbook->seller_id && \Auth::id()!==1 && !$textbook->purchased_at)
@@ -32,6 +38,7 @@
                 <button type="submit">購入</button>
               </form>
             @endif
+            @if (\Auth::id()===1 || \Auth::id()===$textbook->seller_id)
             <a href="{{ route('textbooks.edit', $textbook->id) }}"><button class="btn-edit" type="submit">編集</button></a>
             <a href="" onclick="deleteTextbook()"><button class="btn-det" type="submit">削除</button></a>
             <form action="{{ route('textbooks.destroy', $textbook) }}" method="POST"  id="delete-form">
@@ -46,6 +53,7 @@
                       }
                   }
             </script>
+            @endif
           </div>
         </div>
       </div>
