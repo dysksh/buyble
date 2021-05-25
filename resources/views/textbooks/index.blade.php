@@ -77,7 +77,9 @@
 </table>
 </div>
 {{ $textbooks->links() }}
-<div class="txt-reg">
- <p><a href="{{ route('textbooks.create') }}">+教科書登録</a></p>
-</div>
+@if (\Auth::id() !== 1)
+   <div class="txt-reg">
+      <p><a href="{{ route('textbooks.create') }}"><button class="create-textbook-btn">+教科書登録</button></a></p>
+   </div>
+@endif
 @endsection
