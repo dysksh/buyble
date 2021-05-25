@@ -41,7 +41,7 @@
 
                             <div class="form-group">
                                 <label for="classification_id">
-                                分類
+                                カテゴリ
                                 </label>
                                 <div>  
                                     <select name="classification_id" id=""required>

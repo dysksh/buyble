@@ -17,7 +17,7 @@
               <dd>{{ $textbook->title }}</dd>
               <dt>著者名</dt>
               <dd>{{ $textbook->author }}</dd>
-              <dt>分類</dt>
+              <dt>カテゴリ</dt>
               <dd>{{ $textbook->classification->name }}</dd>
               <dt>状態</dt>
               <dd>{{ $textbook->condition->name }}</dd>

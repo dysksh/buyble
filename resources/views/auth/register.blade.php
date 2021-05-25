@@ -16,7 +16,7 @@
     </p>
     <p>
         <label for="">郵便番号</label><br>
-        <input type="number" name="postal" value="{{ old('postal') }}" required>
+        <input type="number" min="0" name="postal" value="{{ old('postal') }}" required>
     </p>
     <p>
         <label for="">住所</label><br>
@@ -24,7 +24,7 @@
     </p>
     <p>
         <label for="">電話番号</label><br>
-        <input type="number" name="phone" value="{{ old('phone') }}" required>
+        <input type="number" min="0" name="phone" value="{{ old('phone') }}" required>
     </p>
     <p>
         <label for="">メールアドレス</label><br>
