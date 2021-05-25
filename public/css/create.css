@@ -1,0 +1,17 @@
+h1{
+    margin: 30px auto;
+}
+
+dl{
+    text-align: center;
+}
+
+.create-btn{
+    width: 150px;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+dt{
+    margin-top: 1rem;
+}

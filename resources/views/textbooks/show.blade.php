@@ -25,27 +25,27 @@
               <dd>{{ $textbook->price }}</dd>    
             </dl>          
 
-  @if (\Auth::id()!==$textbook->seller_id && \Auth::id()!==1 && !$textbook->purchased_at)
-  <form action="{{ route('purchase', $textbook->id) }}" method="post">
-    @csrf 
-    @method('put')
-    <button type="submit">購入</button>
-  </form>
-@endif
-<a href="{{ route('textbooks.edit', $textbook->id) }}"><button class="btn-edit" type="submit">編集</button></a>
-<a href="" onclick="deleteTextbook()"><button class="btn-det" type="submit">削除</button></a>
-  <form action="{{ route('textbooks.destroy', $textbook) }}" method="POST"  id="delete-form">
-    @csrf
-    @method('delete')
-  </form>
-  <script type="text/javascript">
-    function deleteTextbook(){
-    event.preventDefault();
-    if (window.confirm('教科書情報が削除されます。よろしいですか？')){
-    document.getElementById('delete-form').submit();
-            }
-        }
-    </script>
+            @if (\Auth::id()!==$textbook->seller_id && \Auth::id()!==1 && !$textbook->purchased_at)
+              <form action="{{ route('purchase', $textbook->id) }}" method="post" class="purchase-form">
+                @csrf 
+                @method('put')
+                <button type="submit">購入</button>
+              </form>
+            @endif
+            <a href="{{ route('textbooks.edit', $textbook->id) }}"><button class="btn-edit" type="submit">編集</button></a>
+            <a href="" onclick="deleteTextbook()"><button class="btn-det" type="submit">削除</button></a>
+            <form action="{{ route('textbooks.destroy', $textbook) }}" method="POST"  id="delete-form">
+              @csrf
+              @method('delete')
+            </form>
+            <script type="text/javascript">
+              function deleteTextbook(){
+              event.preventDefault();
+              if (window.confirm('教科書情報が削除されます。よろしいですか？')){
+              document.getElementById('delete-form').submit();
+                      }
+                  }
+            </script>
           </div>
         </div>
       </div>

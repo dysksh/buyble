@@ -34,26 +34,26 @@
         <dd>{{ $user->created_at }}</dd>
     </dl>
 
-    @if (\Auth::id() === 1)
+    @if (\Auth::id() === 1 && $user->id !== 1)
         <a href="{{ route('users.adedit', $user->id) }}"><button class="btn-user" type="submit">編集</button></a>
-    @else
-        <a href="{{ route('users.edit') }}"><button type="submit">編集</button></a>
     @endif
 
-
-    <a href="" onclick="deleteUser()"><button type="submit">削除</button></a>
-    <form action="{{ route('users.admindestroy', $user->id) }}" method="POST"  id="delete-form">
-        @csrf
-        @method('put')
+    @if (\Auth::id() === 1 && $user->id !== 1)
+        <a href="" onclick="deleteUser()"><button type="submit">削除</button></a>
+        <form action="{{ route('users.admindestroy', $user->id) }}" method="POST"  id="delete-form">
+            @csrf
+            @method('delete')
         </form>
-  <script type="text/javascript">
-    function deleteTextbook(){
-    event.preventDefault();
-    if (window.confirm('すべての会員情報が削除されます。よろしいですか？')){
-    document.getElementById('delete-form').submit();
+        <script type="text/javascript">
+            function deleteUser(){
+                event.preventDefault();
+                if (window.confirm('すべての会員情報が削除されます。よろしいですか？')){
+                    document.getElementById('delete-form').submit();
+                }
             }
-        }
-    </script>
+        </script>
+    @endif
+    
           </div>
         </div>
       </div>

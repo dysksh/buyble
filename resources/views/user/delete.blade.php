@@ -20,17 +20,19 @@
         <dd>{{ $user->created_at }}</dd>
     </dl>
 
-    <a href="" onclick="deleteUser()">退会する</a>
-    <form action="{{ route('users.destroy', $user) }}" method="POST"  id="delete-form">
-        @csrf
-        @method('put')
-    </form>
-    <script type="text/javascript">
-        function deleteUser(){
-            event.preventDefault();
-            if (window.confirm('退会するとすべての会員情報が削除されます。よろしいですか？')){
-                document.getElementById('delete-form').submit();
+    @if (\Auth::id() !== 1)
+        <a href="" onclick="deleteUser()">退会する</a>
+        <form action="{{ route('users.destroy', $user) }}" method="POST"  id="delete-form">
+            @csrf
+            @method('delete')
+        </form>
+        <script type="text/javascript">
+            function deleteUser(){
+                event.preventDefault();
+                if (window.confirm('退会するとすべての会員情報が削除されます。よろしいですか？')){
+                    document.getElementById('delete-form').submit();
+                }
             }
-        }
-    </script>
+        </script>
+    @endif
 @endsection

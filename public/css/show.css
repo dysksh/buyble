@@ -16,6 +16,14 @@ button {
     border-radius: 100vh;
 }
 
+.purchase-form {
+    display: inline;
+}
+
+.purchase-form button {
+    margin-right: 10px;
+}
+
 .btn-edit {
     margin-right: 10px;
 }
