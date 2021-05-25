@@ -49,6 +49,7 @@
      <th>売値</th>
      <th>ISBN番号</th>
      <th>売り手ユーザID</th>
+     <th>在庫</th>
  </tr>
 </thead>
 </div>
@@ -64,6 +65,11 @@
      <td>{{ $textbook->price }}</td>
      <td>{{ $textbook->isbn_no }}</td>
      <td>{{ $textbook->seller_id }}</td>
+     @if($textbook->purchased_at)
+     <td>無</td>
+     @else
+     <td>有</td>
+     @endif
   </tr> 
   </div>
   @endforeach
