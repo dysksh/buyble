@@ -16,7 +16,7 @@
     </p>
     <p>
         <label for="">パスワード</label><br>
-        <input type="password" name="password" value="">
+        <input type="password" name="password" value="" required>
     </p>
     <p><button class="log-btn" type="submit">ログイン</button></p>
     <p>または</p>

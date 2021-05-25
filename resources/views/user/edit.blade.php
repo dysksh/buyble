@@ -20,7 +20,7 @@
                                 名前
                                 </label>
                                 <div>
-                                <input type="text" name="name" class="form-control" value="{{ $user->name }}">
+                                <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
                                 </div>
                             </div>
 
@@ -29,7 +29,7 @@
                                 郵便番号
                                 </label>
                                 <div>
-                                <input type="text" name="postal" class="form-control" value="{{ $user->postal }}">
+                                <input type="text" name="postal" class="form-control" value="{{ $user->postal }}" required>
                                 </div>
                             </div>
 
@@ -38,7 +38,7 @@
                                 住所
                                 </label>
                                 <div>
-                                    <textarea name="address" rows="2" class="form-control">{{ $user->address }}</textarea>
+                                    <textarea name="address" rows="2" class="form-control" required>{{ $user->address }}</textarea>
                                 </div>
                             </div>
 
@@ -47,7 +47,7 @@
                                 電話番号
                                 </label>
                                 <div>
-                                <input type="text" name="phone" class="form-control" value="{{ $user->phone }}">
+                                <input type="text" name="phone" class="form-control" value="{{ $user->phone }}" required>
                                 </div>
                             </div>
 
@@ -56,7 +56,7 @@
                                     メールアドレス
                                 </label>
                                 <div>
-                                    <input type="text" name="email" class="form-control" value="{{ $user->email }}">
+                                    <input type="text" name="email" class="form-control" value="{{ $user->email }}" required>
                                 </div>
                             </div>
 
