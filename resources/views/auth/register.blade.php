@@ -12,31 +12,31 @@
     @csrf
     <p>
         <label for="">お名前</label><br>
-        <input type="text" name="name" value="{{ old('name') }}">
+        <input type="text" name="name" value="{{ old('name') }}" required>
     </p>
     <p>
         <label for="">郵便番号</label><br>
-        <input type="number" name="postal" value="{{ old('postal') }}">
+        <input type="number" min="0" name="postal" value="{{ old('postal') }}" required>
     </p>
     <p>
         <label for="">住所</label><br>
-        <input type="text" name="address" value="{{ old('address') }}">
+        <input type="text" name="address" value="{{ old('address') }}" required>
     </p>
     <p>
         <label for="">電話番号</label><br>
-        <input type="number" name="phone" value="{{ old('phone') }}">
+        <input type="number" min="0" name="phone" value="{{ old('phone') }}" required>
     </p>
     <p>
         <label for="">メールアドレス</label><br>
-        <input type="email" name="email" value="{{ old('email') }}">
+        <input type="email" name="email" value="{{ old('email') }}" required>
     </p>
     <p>
         <label for="">パスワード</label><br>
-        <input type="password" name="password" value="">
+        <input type="password" name="password" value="" required>
     </p>
     <p>
         <label for="">パスワード確認</label><br>
-        <input type="password" name="password_confirmation" value="">
+        <input type="password" name="password_confirmation" value="" required>
     </p>
     <p>
         <button class="reg-btn" type="submit">登録</button>

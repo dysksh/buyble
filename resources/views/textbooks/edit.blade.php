@@ -17,7 +17,7 @@
                                 ISBN番号
                                 </label>
                                 <div>
-                                <input type="text" name="isbn_no" value="{{ $textbook->isbn_no }}">
+                                <input type="text" name="isbn_no" value="{{ $textbook->isbn_no }}"required>
                                 </div>
                             </div>
 
@@ -26,7 +26,7 @@
                                 タイトル
                                 </label>
                                 <div>
-                                <input type="text" name="title" value="{{ $textbook->title }}">
+                                <input type="text" name="title" value="{{ $textbook->title }}"required>
                                 </div>
                             </div>
 
@@ -35,16 +35,16 @@
                                 著者名
                                 </label>
                                 <div>
-                                <input type="text" name="author" value="{{ $textbook->author }}">
+                                <input type="text" name="author" value="{{ $textbook->author }}"required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="classification_id">
-                                分類
+                                カテゴリ
                                 </label>
                                 <div>  
-                                    <select name="classification_id" id="">
+                                    <select name="classification_id" id=""required>
                                         @foreach ($classifications as $classification)
                                             <option value="{{ $classification->id }}"<?= $textbook->classification_id===$classification->id ? 'selected': "" ?>>{{ $classification->name }}</option>
                                         @endforeach
@@ -57,7 +57,7 @@
                                 状態
                                 </label>
                                 <div>
-                                    <select name="condition_id" id="">
+                                    <select name="condition_id" id=""required>
                                         @foreach ($conditions as $condition)
                                             <option value="{{ $condition->id }}"<?= $textbook->condition_id===$condition->id ? 'selected': "" ?>>{{ $condition->name }}</option>
                                         @endforeach
@@ -70,7 +70,7 @@
                                 売値
                                 </label>
                                 <div>
-                                <input type="text" name="price" value="{{ $textbook->price }}">
+                                <input type="text" name="price" value="{{ $textbook->price }}"required>
                                 </div>
                             </div> 
                             <div class="form-group">

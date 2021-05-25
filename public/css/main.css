@@ -63,3 +63,26 @@ button:focus {
     justify-content: center;
     align-items: center;
 }
+
+input[type="number"]::-webkit-outer-spin-button, 
+input[type="number"]::-webkit-inner-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type="number"] { 
+    -moz-appearance:textfield; 
+}
+
+.alert-ul {
+    margin-bottom: 0;
+}
+
+.alert-li {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.alert {
+    margin-bottom: 30px;
+}

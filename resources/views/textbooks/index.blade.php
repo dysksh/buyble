@@ -16,7 +16,7 @@
       <dd><input type="text" name="isbn_no" placeholder="ISBN番号" value="{{ request('isbn_no') }}"></dd>
       <dt>タイトル</dt>
       <dd><input type="text" name="title" placeholder="タイトル" value="{{ request('title') }}"></dd>
-      <dt>分類</dt>   
+      <dt>カテゴリ</dt>   
       <dd>
          <select name="classification_id" id="">
             @if (!request('classification_id'))
@@ -30,7 +30,7 @@
       <dt>著者名</dt>
       <dd><input type="text" name="author" placeholder="著者名" value="{{ request('author') }}"></dd>
       <dt>売値</dt>
-      <dd><input type="number" name="price_min" placeholder="円" value="{{ request('price_min') }}">～<input type="number" name="price_max" placeholder="円" value="{{ request('price_max') }}"></dd>
+      <dd><input type="number" min="1" name="price_min" placeholder="円" value="{{ request('price_min') }}">～<input type="number" min="1" name="price_max" placeholder="円" value="{{ request('price_max') }}"></dd>
     </div>
       <P class="serch">
          <button type="submit">検索</button>
@@ -45,10 +45,11 @@
      <th>ID</th>
      <th>タイトル</th>
      <th>著者名</th>
-     <th>分類</th>
+     <th>カテゴリ</th>
      <th>売値</th>
      <th>ISBN番号</th>
      <th>売り手ユーザID</th>
+     <th>在庫</th>
  </tr>
 </thead>
 </div>
@@ -64,6 +65,11 @@
      <td>{{ $textbook->price }}</td>
      <td>{{ $textbook->isbn_no }}</td>
      <td>{{ $textbook->seller_id }}</td>
+     @if($textbook->purchased_at)
+     <td>無</td>
+     @else
+     <td>有</td>
+     @endif
   </tr> 
   </div>
   @endforeach

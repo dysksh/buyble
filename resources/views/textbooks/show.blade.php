@@ -17,7 +17,7 @@
               <dd>{{ $textbook->title }}</dd>
               <dt>著者名</dt>
               <dd>{{ $textbook->author }}</dd>
-              <dt>分類</dt>
+              <dt>カテゴリ</dt>
               <dd>{{ $textbook->classification->name }}</dd>
               <dt>状態</dt>
               <dd>{{ $textbook->condition->name }}</dd>
@@ -28,6 +28,11 @@
                 <img src="../../uploads/{{ $textbook->file_name }}" width="200px" height="auto">
               @else
                 <img src="../../uploads/noimage.jpg" width="200px" height="auto">
+              @endif
+              @if($textbook->purchased_at)
+               <dd>在庫なし</dd>
+              @else
+               <dd>在庫あり</dd>
               @endif
             </dl>          
 
