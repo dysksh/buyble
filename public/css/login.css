@@ -19,6 +19,7 @@ p {
 body {
     margin: 0 auto;
     font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-color: #424B54;
 }
 
 p.logo1 img {
@@ -35,6 +36,7 @@ p.logo1 img {
 
   div {
       margin-top: 30px;
+      color: #fff;
   }
 
   .log-btn {
