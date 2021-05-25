@@ -19,3 +19,27 @@ dl{
 dt{
     margin-top: 1rem;
 }
+
+.search-area {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin: 1rem auto;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #90EE90;
+    width: 450px;
+}
+
+.search-result {
+    width: 960px;
+    margin: 0 auto 20px;
+    position: relative;
+    padding: 30px 30px;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    background-color: #CCCCCC;
+}
+
