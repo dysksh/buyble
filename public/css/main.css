@@ -59,3 +59,16 @@ button:focus {
     justify-content: center;
     align-items: center;
 }
+
+.alert-ul {
+    margin-bottom: 0;
+}
+
+.alert-li {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.alert {
+    margin-bottom: 30px;
+}
