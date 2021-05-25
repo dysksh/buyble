@@ -1,10 +1,14 @@
+@push('css')
+    <link href="{{ asset('css/create.css') }}" rel="stylesheet">
+@endpush
 @extends('layouts.app')
 
 @section('content')
 <h1>教科書登録画面</h1>
 
+<div>
 <form action="{{ route('textbooks.store') }}" method="post">
-@csrf 
+@csrf
 <dl>
    <dt>ISBN番号</dt>
    <dd>
@@ -36,10 +40,11 @@
    </dd>
    <dt>売値</dt>
    <dd>
-       <input type="text" name="price" value="{{ old('price', $textbook->price) }}">
+       <input type="number" name="price" value="{{ old('price', $textbook->price) }}">
    </dd>
 </dl>
 
-<button type="submit">登録</button>
+<p><button type="submit" class="create-btn">登録</button></p>
 </form>
+</div>
 @endsection
