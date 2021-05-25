@@ -1,7 +1,10 @@
+body{
+    background-color: #424B54;
+}
+
 h1 {
     font-size: 45px;
     margin: 30px auto;
-    
 }
 
 .btn-txt {
@@ -18,4 +21,9 @@ div {
     text-align: center;
     margin-bottom: 150px;
 
+}
+
+.container{
+    justify-content: center;
+    align-items: center;
 }

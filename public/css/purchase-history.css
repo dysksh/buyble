@@ -1,3 +1,7 @@
+body{
+    background-color: #424B54;
+}
+
 h1 {
     color: #90ee90;
     font-size: 50px;
@@ -11,13 +15,17 @@ h1 {
     margin-bottom: 50px;
 } */
 
-/* dl {
+/*dl {
     margin: 40px auto;
 } */
 
 thead {
     margin: 30px auto;
+    color: #fff;
+}
 
+tbody{
+    color: #fff;
 }
 
 /* .txt-reg {
@@ -28,7 +36,7 @@ thead {
     margin: 0 auto;
     width: 7%;
     height: auto;
-} 
+}
 
 /* .idx-src {
     display: table;

@@ -71,19 +71,19 @@
 <dl>
    <dt>ISBN番号</dt>
    <dd>
-       <input type="text" name="isbn_no" id="isbn_no" value="{{ old('isbn_no', $textbook->isbn_no) }}">
+       <input type="text" name="isbn_no" id="isbn_no" value="{{ old('isbn_no', $textbook->isbn_no) }}" required>
    </dd>
    <dt>タイトル</dt>
    <dd>
-       <input type="text" name="title" id="title" value="{{ old('title', $textbook->title) }}">
+       <input type="text" name="title" id="title" value="{{ old('title', $textbook->title) }}" required>
    </dd>
    <dt>著者名</dt>
    <dd>
-       <input type="text" name="author" id="author" value="{{ old('author', $textbook->author) }}">
+       <input type="text" name="author" id="author" value="{{ old('author', $textbook->author) }}" required>
    </dd>
    <dt>カテゴリ</dt>
    <dd>
-        <select name="classification_id" id="">
+        <select name="classification_id" id="" required>
             @foreach ($classifications as $classification)
                 <option value="{{ $classification->id }}"<?= request('classification_id')===strval($classification->id) ? 'selected': "" ?>>{{ $classification->name }}</option>
             @endforeach
@@ -91,7 +91,7 @@
    </dd>
    <dt>状態</dt>
    <dd>
-        <select name="condition_id" id="">
+        <select name="condition_id" id="" required>
             @foreach ($conditions as $condition)
                 <option value="{{ $condition->id }}"<?= request('condition_id')===strval($condition->id) ? 'selected': "" ?>>{{ $condition->name }}</option>
             @endforeach
@@ -99,7 +99,7 @@
    </dd>
    <dt>売値</dt>
    <dd>
-       <input type="number" min="1" name="price" value="{{ old('price', $textbook->price) }}">
+       <input type="number" min="1" name="price" value="{{ old('price', $textbook->price) }}" required>
    </dd>
    <dt>画像</dt>
    <dd>
