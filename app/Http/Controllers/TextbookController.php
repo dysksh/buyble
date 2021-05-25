@@ -14,7 +14,7 @@ class TextbookController extends Controller
      */
     public function index(Request $request)
     {
-        $query = \App\Textbook::select('id', 'title', 'author', 'classification_id', 'price', 'isbn_no', 'seller_id');
+        $query = \App\Textbook::select('id', 'title', 'author', 'classification_id', 'price', 'isbn_no', 'seller_id', 'purchased_at');
         if ($request->isbn_no) {
             $query->where('isbn_no', '=', $request->isbn_no);
         }
