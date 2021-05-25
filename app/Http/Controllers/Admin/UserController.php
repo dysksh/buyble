@@ -10,11 +10,21 @@ use Illuminate\Support\Facades\Auth; //追加
 class UserController extends Controller
 {
     // 会員管理
-    public function index() {
+    public function index(Request $request) {
         // 管理者でなければ教科書一覧に飛ばす
         if (Auth::id() === 1) {
-            $users = User::where('id', '<>', 1)->orderBy('created_at', 'desc')->paginate(20);;
-            return view('user.index', ['users' => $users]);
+            $query = \App\User::select('id', 'name', 'email');
+            if ($request->id) {
+                $query->where('id', '=', $request->id);
+            }
+            if ($request->name) {
+                $query->where('name', 'LIKE', '%'.$request->name.'%');
+            }
+            if ($request->email) {
+                $query->where('email', 'LIKE', '%'.$request->email.'%');
+            }
+            $users = $query->where('id', '<>', 1)->paginate(20);
+            return view('user.index' , ['users' => $users]);
         } else {
             return redirect(route('textbooks.index'));
         }
