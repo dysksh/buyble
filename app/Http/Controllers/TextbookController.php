@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Textbook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use GuzzleHttp\Client;
 
 class TextbookController extends Controller
 {
@@ -44,13 +45,50 @@ class TextbookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         $textbook = new TextBook;
         $this->authorize($textbook);
         $classifications = \App\Classification::all();
         $conditions = \App\Condition::all();
-        return view('textbooks/create', ['textbook' => $textbook, 'classifications' => $classifications, 'conditions' => $conditions]);
+        $data = [];
+        
+        $items = null;
+ 
+        if (!empty($request->keyword) && mb_strlen($request->keyword) ===10)
+        {
+            // 検索キーワードあり
+ 
+            // 日本語で検索するためにURLエンコードする
+            $isbn = urlencode($request->keyword);
+ 
+            // APIを発行するURLを生成
+            // $url = 'https://www.googleapis.com/books/v1/volumes?q=' . $title . '&country=JP&tbm=bks';
+            $url = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' . $isbn;
+            $client = new Client();
+ 
+            // GETでリクエスト実行
+            $response = $client->request("GET", $url);
+    
+            $body = $response->getBody();
+            
+            // レスポンスのJSON形式を連想配列に変換
+            $bodyArray = json_decode($body, true);
+    
+            // 書籍情報部分を取得
+            if (!empty($bodyArray['items'])) {
+                $items = $bodyArray['items'];
+            }
+
+            // レスポンスの中身を見る
+            //dd($items);
+        }
+ 
+        // $data = [
+        //     'items' => $items,
+        //     'keyword' => $request->keyword,
+        // ];
+        return view('textbooks/create', ['textbook' => $textbook, 'classifications' => $classifications, 'conditions' => $conditions, 'items' => $items, 'keyword' => $request->keyword]);
     }
 
     /**
@@ -69,6 +107,9 @@ class TextbookController extends Controller
             $fileName = time() . $file->getClientOriginalName();
             $target_path = public_path('uploads/');
             $file->move($target_path, $fileName);
+        } elseif ($file = $request->google_image) {
+            $fileName = $request->google_image;
+            $target_path = "";
         } else {
             $fileName = "";
         }
@@ -81,9 +122,11 @@ class TextbookController extends Controller
         $textbook->condition_id = $request->condition_id;
         $textbook->seller_id = $request->user()->id;
         $textbook->price = $request->price;
-        if ($fileName && $target_path) {
-        $textbook->file_name = $fileName;
-        $textbook->file_path = $target_path;
+        if ($fileName) {
+            $textbook->file_name = $fileName;
+        }
+        if ($target_path) {
+            $textbook->file_path = $target_path;
         }
         $textbook->save();
 
