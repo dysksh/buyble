@@ -1,5 +1,5 @@
 @push('css')
-    <link href="{{ asset('css/user.delete.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/user-delete.css') }}" rel="stylesheet">
 @endpush
 @extends('layouts.app')
 
