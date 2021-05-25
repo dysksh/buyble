@@ -23,7 +23,7 @@
    <dd>
        <input type="text" name="author" value="{{ old('author', $textbook->author) }}">
    </dd>
-   <dt>分類</dt>
+   <dt>カテゴリ</dt>
    <dd>
         <select name="classification_id" id="">
             @foreach ($classifications as $classification)
@@ -41,11 +41,11 @@
    </dd>
    <dt>売値</dt>
    <dd>
-       <input type="number" name="price" value="{{ old('price', $textbook->price) }}">
+       <input type="number" min="1" name="price" value="{{ old('price', $textbook->price) }}">
    </dd>
    <dt>画像</dt>
    <dd>
-        <img id="preview" width="200px" style="display: block; margin-bottom: 10px;">
+        <img id="preview" width="200px" style="display: block; margin: 10px auto;">
         <input type="file" name="image" accept="image/png, image/jpeg" />
    </dd>
 </dl>
