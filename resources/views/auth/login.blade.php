@@ -21,7 +21,7 @@
     <p><button class="log-btn" type="submit">ログイン</button></p>
     <p>または</p>
     <p>
-        <a href="{{ route('register') }}">会員登録</a>   
+        <a href="{{ route('register') }}">会員登録</a>
     </p>
 </form>
 </div>
