@@ -15,13 +15,13 @@
     <header>
         <div class="container header">
             <a class="brand header-a"  href="/">
-                <img src="/img/logo1.jpg" alt="ロゴ" width="25%" height="25%">{{ config('app.name') }}
+                <img src="/img/logo2.png" alt="ロゴ" width="25%" height="25%">{{ config('app.name') }}
             </a>
             @include('commons/nav')
         </div>
     </header>
     <main>
-        <div class="container">
+        <div class="container test">
             @yield('content')
         </div>
     </main>

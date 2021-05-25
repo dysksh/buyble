@@ -5,7 +5,7 @@
 
 @section('content')
 <div>
-<p class="logo1"><img src="/img/logo1.jpg" alt="ロゴ"></p>
+<p class="logo1"><img src="/img/logo2.png" alt="ロゴ"></p>
 <h1>{{ config('app.name') }}会員登録</h1>
 @include('commons/flash')
 <form action="{{ route('register') }}" method="post">
