@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Textbook;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TextbookController extends Controller
 {
@@ -60,7 +61,33 @@ class TextbookController extends Controller
      */
     public function store(Request $request)
     {
-        $textbook = $request->user()->registered()->create($request->all());
+        // $request->validate([
+		// 	'image' => 'required|file|image|mimes:png,jpeg'
+		// ]);
+
+        if ($file = $request->image) {
+            $fileName = time() . $file->getClientOriginalName();
+            $target_path = public_path('uploads/');
+            $file->move($target_path, $fileName);
+        } else {
+            $fileName = "";
+        }
+
+        $textbook = new Textbook;
+        $textbook->isbn_no = $request->isbn_no;
+        $textbook->title = $request->title;
+        $textbook->author = $request->author;
+        $textbook->classification_id = $request->classification_id;
+        $textbook->condition_id = $request->condition_id;
+        $textbook->seller_id = $request->user()->id;
+        $textbook->price = $request->price;
+        if ($fileName && $target_path) {
+        $textbook->file_name = $fileName;
+        $textbook->file_path = $target_path;
+        }
+        $textbook->save();
+
+        // $textbook = $request->user()->registered()->create($request->all());
         $this->authorize($textbook);
         return redirect(route('textbooks.index'));
     }
@@ -100,7 +127,29 @@ class TextbookController extends Controller
     public function update(Request $request, Textbook $textbook)
     {
         $this->authorize($textbook);
-        $textbook->update($request->all());
+        
+        if ($file = $request->image) {
+            \File::delete($textbook->file_path . $textbook->file_name);
+            $fileName = time() . $file->getClientOriginalName();
+            $target_path = public_path('uploads/');
+            $file->move($target_path, $fileName);
+        } else {
+            $fileName = "";
+        }
+
+        $textbook->isbn_no = $request->isbn_no;
+        $textbook->title = $request->title;
+        $textbook->author = $request->author;
+        $textbook->classification_id = $request->classification_id;
+        $textbook->condition_id = $request->condition_id;
+        $textbook->seller_id = $request->user()->id;
+        $textbook->price = $request->price;
+        if ($fileName && $target_path) {
+            $textbook->file_name = $fileName;
+            $textbook->file_path = $target_path;
+        }
+        $textbook->save();
+        // $textbook->update($request->all());
         return redirect(route('textbooks.show', $textbook->id));
     }
 

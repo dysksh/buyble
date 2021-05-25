@@ -3,7 +3,7 @@
 @section('content')
 <h1>教科書登録画面</h1>
 
-<form action="{{ route('textbooks.store') }}" method="post">
+<form action="{{ route('textbooks.store') }}" method="post" enctype="multipart/form-data">
 @csrf 
 <dl>
    <dt>ISBN番号</dt>
@@ -38,8 +38,28 @@
    <dd>
        <input type="text" name="price" value="{{ old('price', $textbook->price) }}">
    </dd>
+   <dt>画像</dt>
+   <dd>
+        <img id="preview" width="200px" style="display: block; margin-bottom: 10px;">
+        <input type="file" name="image" accept="image/png, image/jpeg" />
+   </dd>
 </dl>
 
 <button type="submit">登録</button>
 </form>
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+    $("[name='image']").on('change', function (e) {
+        
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+            $("#preview").attr('src', e.target.result);
+        }
+    
+        reader.readAsDataURL(e.target.files[0]);   
+    
+    });
+    });
+</script>
 @endsection

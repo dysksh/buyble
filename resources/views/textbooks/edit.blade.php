@@ -9,7 +9,7 @@
                     <div class="card-body">
                        @include('commons.flash')
                       
-                            <form action="{{ route('textbooks.update', $textbook->id) }}" method="post">
+                            <form action="{{ route('textbooks.update', $textbook->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="form-group">
@@ -72,7 +72,19 @@
                                 <div>
                                 <input type="text" name="price" value="{{ $textbook->price }}">
                                 </div>
-                            </div>    
+                            </div> 
+                            <div class="form-group">
+                                <label for="image">
+                                画像
+                                </label>
+                                <div>
+                                @if (!$textbook->file_name)
+                                    <img src="../../uploads/noimage.jpg" width="200px" height="auto" id="noimage">
+                                @endif
+                                <img src="../../uploads/{{ $textbook->file_name }}" id="preview" width="200px" style="display: block; margin-bottom: 10px;">
+                                <input type="file" name="image" accept="image/png, image/jpeg" />
+                                </div>
+                            </div>
                             <button type="submit" class="user-btn">更新</button>
                             </form>
                        </div>
@@ -81,4 +93,20 @@
          </div>
      </div>
  </div>
+<script>
+    window.addEventListener('DOMContentLoaded',function(){
+    $("[name='image']").on('change', function (e) {
+        
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+            $("#preview").attr('src', e.target.result);
+        }
+    
+        reader.readAsDataURL(e.target.files[0]);   
+        document.getElementById("noimage").style.display ="none";
+    
+    });
+    });
+</script>
 @endsection
