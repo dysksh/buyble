@@ -29,6 +29,11 @@
               @else
                 <img src="../../uploads/noimage.jpg" width="200px" height="auto">
               @endif
+              @if($textbook->purchased_at)
+               <dd>在庫なし</dd>
+              @else
+               <dd>在庫あり</dd>
+              @endif
             </dl>          
 
             @if (\Auth::id()!==$textbook->seller_id && \Auth::id()!==1 && !$textbook->purchased_at)
