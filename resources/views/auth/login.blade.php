@@ -12,7 +12,7 @@
     @csrf
     <p>
         <label for="">メールアドレス</label><br>
-        <input type="email" name="email" value="{{ old('email') }}">
+        <input type="email" name="email" value="{{ old('email') }}" required>
     </p>
     <p>
         <label for="">パスワード</label><br>

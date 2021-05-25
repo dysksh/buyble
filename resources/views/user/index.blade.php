@@ -13,7 +13,7 @@
     <dl>
         <div class="idx-src">
             <dt>ユーザID</dt>
-                <dd><input type="number" name="id" placeholder="ユーザID" value="{{ request('id') }}"></dd>
+                <dd><input type="number" min="0" name="id" placeholder="ユーザID" value="{{ request('id') }}"></dd>
             <dt>名前</dt>
                 <dd><input type="text" name="name" placeholder="名前" value="{{ request('name') }}"></dd>
             <dt>メールアドレス</dt>
