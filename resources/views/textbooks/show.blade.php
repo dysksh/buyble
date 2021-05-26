@@ -40,9 +40,17 @@
 
             @if (\Auth::id()!==$textbook->seller_id && \Auth::id()!==1 && !$textbook->purchased_at)
               <form action="{{ route('purchase', $textbook->id) }}" method="post" class="purchase-form">
-                @csrf 
-                @method('put')
-                <button type="submit">購入</button>
+                  @csrf 
+                  @method('put')
+                  <script
+                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="{{ env('STRIPE_KEY') }}"
+                      data-amount=<?php echo json_encode($textbook->price); ?>
+                      data-name="クレジットカード決済"
+                      data-label="購入"
+                      data-locale="auto"
+                      data-currency="JPY">
+                  </script>
               </form>
             @endif
             @if (\Auth::id()===1 || \Auth::id()===$textbook->seller_id)
