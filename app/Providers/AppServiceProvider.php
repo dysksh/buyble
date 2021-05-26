@@ -24,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // ローカルでのマイグレーション時にコメントアウトする必要があるかも
         Schema::defaultStringLength(191);
     }
 }
