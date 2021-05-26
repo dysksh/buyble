@@ -11,12 +11,12 @@
    @csrf
    @method('get')
    <dl>
-     <div class="idx-src">   
+     <div class="idx-src">
       <dt>ISBN番号</dt>
-      <dd><input type="text" name="isbn_no" placeholder="ISBN番号" value="{{ request('isbn_no') }}"></dd>
+      <dd><input type="number" min="0" name="isbn_no" placeholder="ISBN番号" value="{{ request('isbn_no') }}"></dd>
       <dt>タイトル</dt>
       <dd><input type="text" name="title" placeholder="タイトル" value="{{ request('title') }}"></dd>
-      <dt>カテゴリ</dt>   
+      <dt>カテゴリ</dt>
       <dd>
          <select name="classification_id" id="">
             @if (!request('classification_id'))
@@ -42,14 +42,19 @@
 <table class="table">
 <thead>
   <tr>
-     <th>ID</th>
-     <th>タイトル</th>
-     <th>著者名</th>
-     <th>カテゴリ</th>
-     <th>売値</th>
-     <th>ISBN番号</th>
-     <th>売り手ユーザID</th>
-     <th>在庫</th>
+      <th>画像</th>
+      @if (\Auth::id() === 1)
+         <th>ID</th>
+      @endif
+      <th>タイトル</th>
+      <th>著者名</th>
+      <th>カテゴリ</th>
+      <th>売値</th>
+      <th>ISBN番号</th>
+      @if (\Auth::id() === 1)
+         <th>売り手ユーザID</th>
+      @endif
+    <th>在庫</th>
  </tr>
 </thead>
 </div>
@@ -58,19 +63,32 @@
   @foreach($textbooks as $textbook)
   <div class="txt-data">
   <tr>
-     <td>{{ $textbook->id }}</td>
-     <td><a href="{{ route('textbooks.show', $textbook) }}">{{ $textbook->title }}</a></td>
-     <td>{{ $textbook->author }}</td>
-     <td>{{ $textbook->classification->name }}</td>
-     <td>{{ $textbook->price }}</td>
-     <td>{{ $textbook->isbn_no }}</td>
-     <td>{{ $textbook->seller_id }}</td>
-     @if($textbook->purchased_at)
-     <td>無</td>
-     @else
-     <td>有</td>
-     @endif
-  </tr> 
+      <td>
+        @if ($textbook->file_name && $textbook->file_path)
+        <img src="../../uploads/{{ $textbook->file_name }}" width="64px" height="auto">
+        @elseif ($textbook->file_name && !$textbook->file_path)
+        <img src="{{ $textbook->file_name }}" width="64px" height="auto">
+        @else
+        <img src="../../img/noimage.jpg" width="64px" height="auto">
+        @endif
+      </td>
+      @if (\Auth::id() === 1)
+        <td>{{ $textbook->id }}</td>
+      @endif
+      <td><a href="{{ route('textbooks.show', $textbook) }}">{{ $textbook->title }}</a></td>
+      <td>{{ $textbook->author }}</td>
+      <td>{{ $textbook->classification->name }}</td>
+      <td>{{ $textbook->price }}</td>
+      <td>{{ $textbook->isbn_no }}</td>
+      @if (\Auth::id() === 1)
+        <td>{{ $textbook->seller_id }}</td>
+      @endif
+      @if($textbook->purchased_at)
+      <td>無</td>
+      @else
+      <td>有</td>
+      @endif
+  </tr>
   </div>
   @endforeach
 </tbody>

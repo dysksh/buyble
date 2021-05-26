@@ -45,7 +45,7 @@ let application = [];
                 @endif
                 <br>
                 @if (array_key_exists('imageLinks', $item['volumeInfo']) && array_key_exists('description', $item['volumeInfo']) && $item['volumeInfo']['industryIdentifiers'])
-                
+
                 <button id="application{{ $i }}">適用</button>
                 <script>
                     application[i] = document.querySelector('#application<?= json_encode($i); ?>');
