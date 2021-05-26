@@ -29,7 +29,7 @@
               @elseif ($textbook->file_name && !$textbook->file_path)
                 <img src="{{ $textbook->file_name }}" width="200px" height="auto">
               @else
-                <img src="../../uploads/noimage.jpg" width="200px" height="auto">
+                <img src="../../img/noimage.jpg" width="200px" height="auto">
               @endif
               @if($textbook->purchased_at)
                <dd>在庫なし</dd>
