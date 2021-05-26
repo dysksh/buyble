@@ -7,7 +7,7 @@
 <h1>教科書登録画面</h1>
 <div class="search-area">
     <form action="{{ route('textbooks.create') }}" method="get">
-        ISBN番号:<input type="text" name="keyword" size="25" value="{{ $keyword }}">&nbsp;<input type="submit" value="検索">
+        ISBN番号:<input type="number" min="0" name="keyword" size="25" value="{{ $keyword }}">&nbsp;<input type="submit" value="検索">
     </form>
 </div>
 <script>
