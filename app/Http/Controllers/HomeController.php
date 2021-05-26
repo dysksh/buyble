@@ -13,7 +13,7 @@ class HomeController extends Controller
         if (\Auth::id() !== 1) {
             return view('home/index');
         } else {
-            return redirect(route('textbooks.index'));
+            return redirect(route('textbooks.index'))->with('flash_message', '無効なURLです');
         }
     }
     public function admin()
@@ -22,7 +22,7 @@ class HomeController extends Controller
         if (\Auth::id() === 1) {
             return view('home/admin');
         } else {
-            return redirect(route('textbooks.index'));
+            return redirect(route('textbooks.index'))->with('flash_message', '無効なURLです');
         }
     }
     public function register_history()
@@ -32,7 +32,7 @@ class HomeController extends Controller
             $textbooks = Textbook::where('seller_id', \Auth::id())->orderBy('created_at', 'desc')->paginate(20);
             return view('textbooks/register_history', ['textbooks' => $textbooks]);
         } else {
-            return redirect(route('textbooks.index'));
+            return redirect(route('textbooks.index'))->with('flash_message', '無効なURLです');
         }
     }
     public function purchase($id)
@@ -43,8 +43,10 @@ class HomeController extends Controller
             $textbook->buyer_id = \Auth::id();
             $textbook->purchased_at = date('Y-m-d H:i:s');
             $textbook->save();
+            return redirect(route('textbooks.show', $textbook->id));
+        } else {
+            return redirect(route('textbooks.show', $textbook->id))->with('flash_message', '無効なURLです');
         }
-        return redirect(route('textbooks.show', $textbook->id));
     }
     public function purchase_history()
     {
@@ -53,7 +55,7 @@ class HomeController extends Controller
             $textbooks = Textbook::where('buyer_id', \Auth::id())->orderBy('created_at', 'desc')->paginate(20);
             return view('textbooks/purchase_history', ['textbooks' => $textbooks]);
         } else {
-            return redirect(route('textbooks.index'));
+            return redirect(route('textbooks.index'))->with('flash_message', '無効なURLです');
         }
     }
 }

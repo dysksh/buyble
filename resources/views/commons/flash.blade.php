@@ -7,3 +7,8 @@
     </ul>
   </div>
 @endif
+@if (session('flash_message'))
+    <div class="flash_message alert alert-danger">
+        {{ session('flash_message') }}
+    </div>
+@endif

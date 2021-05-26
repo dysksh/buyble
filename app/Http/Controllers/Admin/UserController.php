@@ -26,7 +26,7 @@ class UserController extends Controller
             $users = $query->where('id', '<>', 1)->paginate(20);
             return view('user.index' , ['users' => $users]);
         } else {
-            return redirect(route('textbooks.index'));
+            return redirect(route('textbooks.index'))->with('flash_message', '無効なURLです');
         }
     }
 
@@ -37,7 +37,7 @@ class UserController extends Controller
         if (Auth::id() !== 1) {
             return view('user.edit', ['user' => $user]);
         } else {
-            return redirect(route('users.show', $user));
+            return redirect(route('users.show', $user))->with('flash_message', '無効なURLです');
         }
     }
 
@@ -48,7 +48,7 @@ class UserController extends Controller
         if (Auth::id() === 1 && $user->id !== 1) {
             return view('user.edit', ['user' => $user]);
         } else {
-            return redirect(route('users.show', $user));
+            return redirect(route('users.show', $user))->with('flash_message', '無効なURLです');
         }
     }
 
@@ -62,15 +62,17 @@ class UserController extends Controller
                 'postal' => 'required|digits:7',
                 'address' => 'required|max:150',
                 'phone' => 'required|digits_between:10, 15',
-                'email' => 'required|email|max:50'
+                'email' => 'required|email:strict,dns|max:50|unique:users'
             ]);
             $user = Auth::user();
             //不要な「_token」の削除
             unset($user_form['_token']);
             //保存
             $user->fill($user_form)->save();
+            return redirect(route('users.edit', $user));
+        } else {
+            return redirect(route('users.edit', $user))->with('flash_message', '無効なURLです');
         }
-        return redirect(route('users.edit', $user));
     }
 
     //admin用userデータの保存
@@ -83,15 +85,17 @@ class UserController extends Controller
                 'postal' => 'required|digits:7',
                 'address' => 'required|max:150',
                 'phone' => 'required|digits_between:10, 15',
-                'email' => 'required|email|max:50'
+                'email' => 'required|email:strict,dns|max:50|unique:users'
             ]);
             $user_form = $request->all();
             //不要な「_token」の削除
             unset($user_form['_token']);
             //保存
             $user->fill($user_form)->save();
+            return redirect(route('users.show', $user));
+        } else {
+            return redirect(route('users.show', $user))->with('flash_message', '無効なURLです');
         }
-        return redirect(route('users.show', $user));
     }
 
     public function delete(User $user)
@@ -101,7 +105,7 @@ class UserController extends Controller
             $user = Auth::user();
             return view('user.delete', ['user' => $user]);
         } else {
-            return redirect(route('home'));
+            return redirect(route('home'))->with('flash_message', '無効なURLです');
         }
     }
 
@@ -115,7 +119,7 @@ class UserController extends Controller
 
             return view('auth.login');
         } else {
-            return redirect(route('home'));
+            return redirect(route('home'))->with('flash_message', '無効なURLです');
         }
     }
 
@@ -126,7 +130,7 @@ class UserController extends Controller
             $user = User::find($id);
             return view('user.show', ['user'=>$user]);
         } else {
-            return redirect(route('textbooks.index'));
+            return redirect(route('textbooks.index'))->with('flash_message', '無効なURLです');
         }
     }
 
@@ -139,7 +143,7 @@ class UserController extends Controller
 
             return redirect(route('users.index'));
         } else {
-            return redirect(route('users.show', $user));
+            return redirect(route('users.show', $user))->with('flash_message', '無効なURLです');
         }
     }
 }
