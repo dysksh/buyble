@@ -4,6 +4,8 @@
 @extends('layouts.app')
 
 @section('content')
+@include('commons/flash')
+
 <h1>教科書一覧</h1>
 
 

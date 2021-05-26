@@ -112,7 +112,7 @@ class TextbookController extends Controller
             'author' => 'required|max:50',
             'classification_id' => 'required|numeric|max:11|min:1',
             'condition_id' => 'required|numeric|max:3|min:1',
-            'price' => 'required|numeric|min:1',
+            'price' => 'required|numeric|min:1|max:9999999999',
             'file_name' => 'nullable',
             'file_path'=> 'nullable'
         ]);
@@ -190,7 +190,7 @@ class TextbookController extends Controller
             'author' => 'required|max:50',
             'classification_id' => 'required|numeric|max:11|min:1',
             'condition_id' => 'required|numeric|max:3|min:1',
-            'price' => 'required|numeric|min:1',
+            'price' => 'required|numeric|min:1|max:9999999999',
             'file_name' => 'nullable',
             'file_path'=> 'nullable'
         ]);

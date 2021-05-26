@@ -2,8 +2,8 @@
     <link href="{{ asset('css/user.show.css') }}" rel="stylesheet">
 @endpush
 @extends('layouts.app')
-@include('commons.flash')
 @section('content')
+@include('commons.flash')
 <h1>{{ $user->name }}詳細</h1>
 <div class="container m-5">
   <div class="row justify-content-center">
