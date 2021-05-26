@@ -152,6 +152,13 @@ return [
         'postal'=>'郵便番号',
         'address'=>'住所',
         'phone'=>'電話番号',
+        'isbn_no' => 'ISBN番号',
+        'title' => 'タイトル',
+        'author' => '著者',
+        'classification_id' => 'カテゴリ',
+        'condition_id' => '状態',
+        'price' => '売値',
+        'keyword' => '検索用ISBN番号',
     ],
 
 ];

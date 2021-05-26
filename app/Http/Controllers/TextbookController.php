@@ -49,6 +49,9 @@ class TextbookController extends Controller
     {
         $textbook = new TextBook;
         $this->authorize($textbook);
+        $this->validate($request, [
+            'keyword' => 'nullable|digits:10'
+        ]);
         $classifications = \App\Classification::all();
         $conditions = \App\Condition::all();
         $data = [];
@@ -103,6 +106,16 @@ class TextbookController extends Controller
 		// 	'image' => 'required|file|image|mimes:png,jpeg'
 		// ]);
 
+        $this->validate($request, [
+            'isbn_no' => 'required|digits:10',
+            'title' => 'required|max:50',
+            'author' => 'required|max:50',
+            'classification_id' => 'required|numeric|max:11|min:1',
+            'condition_id' => 'required|numeric|max:3|min:1',
+            'price' => 'required|numeric|min:1',
+            'file_name' => 'nullable',
+            'file_path'=> 'nullable'
+        ]);
         if ($file = $request->image) {
             $fileName = time() . $file->getClientOriginalName();
             $target_path = public_path('uploads/');
@@ -171,7 +184,16 @@ class TextbookController extends Controller
     public function update(Request $request, Textbook $textbook)
     {
         $this->authorize($textbook);
-        
+        $this->validate($request, [
+            'isbn_no' => 'required|digits:10',
+            'title' => 'required|max:50',
+            'author' => 'required|max:50',
+            'classification_id' => 'required|numeric|max:11|min:1',
+            'condition_id' => 'required|numeric|max:3|min:1',
+            'price' => 'required|numeric|min:1',
+            'file_name' => 'nullable',
+            'file_path'=> 'nullable'
+        ]);
         if ($file = $request->image) {
             \File::delete($textbook->file_path . $textbook->file_name);
             $fileName = time() . $file->getClientOriginalName();

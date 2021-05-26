@@ -57,6 +57,13 @@ class UserController extends Controller
         $user_form = $request->all();
         // 管理者でログインしていなければ更新
         if (Auth::id() !== 1) {
+            $this->validate($request, [
+                'name' => 'required|max:20',
+                'postal' => 'required|digits:7',
+                'address' => 'required|max:150',
+                'phone' => 'required|digits_between:10, 15',
+                'email' => 'required|email|max:50'
+            ]);
             $user = Auth::user();
             //不要な「_token」の削除
             unset($user_form['_token']);
@@ -71,6 +78,13 @@ class UserController extends Controller
         $user = User::find($request->id);
         // 管理者でログインし、対象が管理者以外の場合、更新
         if (Auth::id() === 1 && $user->id !== 1) {
+            $this->validate($request, [
+                'name' => 'required|max:20',
+                'postal' => 'required|digits:7',
+                'address' => 'required|max:150',
+                'phone' => 'required|digits_between:10, 15',
+                'email' => 'required|email|max:50'
+            ]);
             $user_form = $request->all();
             //不要な「_token」の削除
             unset($user_form['_token']);
