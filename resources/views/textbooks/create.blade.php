@@ -10,14 +10,19 @@
         ISBN番号:<input type="text" name="keyword" size="25" value="{{ $keyword }}">&nbsp;<input type="submit" value="検索">
     </form>
 </div>
-
+<script>
+let i = 0;
+let application = [];
+</script>
+<?php $i = 0; ?>
 @if ($items == null)
             <p>ISBN番号を入力してください。</p>
         @else (count($items) > 0)
             <p>「{{ $keyword }}」の検索結果</p>
-            <div class="search-result">
+            
             @foreach ($items as $item)
-            <h2>{{ $item['volumeInfo']['title']}}</h2>
+            <div class="search-result">
+                <h2>{{ $item['volumeInfo']['title']}}</h2>
                 @if (array_key_exists('imageLinks', $item['volumeInfo']))
                     <img src="{{ $item['volumeInfo']['imageLinks']['thumbnail']}}"><br>
                 @endif
@@ -38,14 +43,15 @@
                 @endif
                 <br>
                 @if (array_key_exists('imageLinks', $item['volumeInfo']) && array_key_exists('description', $item['volumeInfo']) && $item['volumeInfo']['industryIdentifiers'])
-                <button id="application">適用</button>
+                
+                <button id="application{{ $i }}">適用</button>
                 <script>
-                    let application = document.querySelector('#application');
-                    function updateForm() {
+                    application[i] = document.querySelector('#application<?= json_encode($i); ?>');
+                    function updateForm<?= json_encode($i); ?>() {
                         let isbnNo = document.querySelector('#isbn_no');
                         let title = document.querySelector('#title');
                         let author = document.querySelector('#author');
-                        let isbnNoVal = <?php echo json_encode($item['volumeInfo']['industryIdentifiers'][0]['identifier']); ?>;
+                        let isbnNoVal = <?php echo json_encode($keyword); ?>;
                         let titleVal = <?php echo json_encode($item['volumeInfo']['title']); ?>;
                         let authorVal = <?php echo json_encode($item['volumeInfo']['authors'][0]); ?>;
                         isbnNo.value = isbnNoVal.toLocaleString();
@@ -58,10 +64,12 @@
                         let img = document.getElementById('preview');
                         img.setAttribute('src', googleImageVal);
                     }
-                    application.addEventListener("click", function() {updateForm()});
+                    application[i].addEventListener("click", function() {updateForm<?= json_encode($i); ?>()});
+                    i++;
                 </script>
+                <?php $i++; ?>
                 @endif
-                </div>
+            </div>
             @endforeach
         @endif
 
