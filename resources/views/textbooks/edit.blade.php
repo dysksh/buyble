@@ -17,7 +17,7 @@
                                 ISBN番号
                                 </label>
                                 <div>
-                                <input type="text" name="isbn_no" value="{{ $textbook->isbn_no }}"required>
+                                <input type="number" name="isbn_no" min="0" value="{{ $textbook->isbn_no }}" required>
                                 </div>
                             </div>
 
@@ -26,7 +26,7 @@
                                 タイトル
                                 </label>
                                 <div>
-                                <input type="text" name="title" value="{{ $textbook->title }}"required>
+                                <input type="text" name="title" value="{{ $textbook->title }}" required>
                                 </div>
                             </div>
 
@@ -70,7 +70,7 @@
                                 売値
                                 </label>
                                 <div>
-                                <input type="text" name="price" value="{{ $textbook->price }}"required>
+                                <input type="text" name="price" min="1" value="{{ $textbook->price }}"required>
                                 </div>
                             </div> 
                             <div class="form-group">

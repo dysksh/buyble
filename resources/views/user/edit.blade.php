@@ -29,7 +29,7 @@
                                 郵便番号
                                 </label>
                                 <div>
-                                <input type="text" name="postal" class="form-control" value="{{ $user->postal }}" required>
+                                <input type="text" name="postal" min="0" class="form-control" value="{{ $user->postal }}" required>
                                 </div>
                             </div>
 
@@ -47,7 +47,7 @@
                                 電話番号
                                 </label>
                                 <div>
-                                <input type="text" name="phone" class="form-control" value="{{ $user->phone }}" required>
+                                <input type="text" name="phone" min="0" class="form-control" value="{{ $user->phone }}" required>
                                 </div>
                             </div>
 

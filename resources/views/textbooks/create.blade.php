@@ -5,6 +5,9 @@
 
 @section('content')
 <h1>教科書登録画面</h1>
+<div class="flash">
+    @include('commons.flash')
+</div>
 <div class="search-area">
     <form action="{{ route('textbooks.create') }}" method="get">
         ISBN番号:<input type="number" min="0" name="keyword" size="25" value="{{ $keyword }}">&nbsp;<input type="submit" value="検索">
@@ -78,7 +81,7 @@ let application = [];
 <dl>
    <dt>ISBN番号</dt>
    <dd>
-       <input type="text" name="isbn_no" id="isbn_no" value="{{ old('isbn_no', $textbook->isbn_no) }}" required>
+       <input type="number" name="isbn_no" min="0" id="isbn_no" value="{{ old('isbn_no', $textbook->isbn_no) }}" required>
    </dd>
    <dt>タイトル</dt>
    <dd>
