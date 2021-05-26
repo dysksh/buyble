@@ -16,7 +16,7 @@ class TextbookController extends Controller
      */
     public function index(Request $request)
     {
-        $query = \App\Textbook::select('id', 'title', 'author', 'classification_id', 'price', 'isbn_no', 'seller_id', 'purchased_at');
+        $query = \App\Textbook::select('id', 'title', 'author', 'classification_id', 'price', 'isbn_no', 'seller_id', 'purchased_at', 'file_name', 'file_path');
         if ($request->isbn_no) {
             $query->where('isbn_no', '=', $request->isbn_no);
         }
@@ -35,7 +35,7 @@ class TextbookController extends Controller
         if ($request->classification_id || $request->classification_id==='0') {
             $query->where('classification_id', $request->classification_id);
         }
-        $textbooks = $query->paginate(20);
+        $textbooks = $query->orderBy('created_at', 'desc')->paginate(15);
         $classifications = \App\Classification::all();
         return view('textbooks/index' , ['textbooks' => $textbooks, 'classifications' => $classifications]);
     }
@@ -52,29 +52,29 @@ class TextbookController extends Controller
         $classifications = \App\Classification::all();
         $conditions = \App\Condition::all();
         $data = [];
-        
+
         $items = null;
- 
+
         if (!empty($request->keyword) && mb_strlen($request->keyword) ===10)
         {
             // 検索キーワードあり
- 
+
             // 日本語で検索するためにURLエンコードする
             $isbn = urlencode($request->keyword);
- 
+
             // APIを発行するURLを生成
             // $url = 'https://www.googleapis.com/books/v1/volumes?q=' . $title . '&country=JP&tbm=bks';
             $url = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' . $isbn;
             $client = new Client();
- 
+
             // GETでリクエスト実行
             $response = $client->request("GET", $url);
-    
+
             $body = $response->getBody();
-            
+
             // レスポンスのJSON形式を連想配列に変換
             $bodyArray = json_decode($body, true);
-    
+
             // 書籍情報部分を取得
             if (!empty($bodyArray['items'])) {
                 $items = $bodyArray['items'];
@@ -83,7 +83,7 @@ class TextbookController extends Controller
             // レスポンスの中身を見る
             //dd($items);
         }
- 
+
         // $data = [
         //     'items' => $items,
         //     'keyword' => $request->keyword,
@@ -171,7 +171,7 @@ class TextbookController extends Controller
     public function update(Request $request, Textbook $textbook)
     {
         $this->authorize($textbook);
-        
+
         if ($file = $request->image) {
             \File::delete($textbook->file_path . $textbook->file_name);
             $fileName = time() . $file->getClientOriginalName();
