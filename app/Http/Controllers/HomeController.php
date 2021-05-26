@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Textbook;
+use Stripe\Stripe;
+use Stripe\Charge;
+
 class HomeController extends Controller
 {
     public function index()
@@ -40,6 +43,12 @@ class HomeController extends Controller
         $textbook = \App\Textbook::find($id);
         // 売り手idとログインユーザが異なり、かつ管理者でログインせず、かつ売れていなければ購入
         if (\Auth::id()!==$textbook->seller_id && \Auth::id()!==1 && !$textbook->purchased_at) {
+            Stripe::setApiKey(env('STRIPE_SECRET'));//シークレットキー
+            $charge = Charge::create(array(
+                'amount' => $textbook->price,
+                'currency' => 'jpy',
+                'source'=> request()->stripeToken,
+            ));
             $textbook->buyer_id = \Auth::id();
             $textbook->purchased_at = date('Y-m-d H:i:s');
             $textbook->save();

@@ -32,4 +32,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('user/{id}', 'Admin\UserController@admindestroy')->name('users.admindestroy');
     Route::put('user/edit/{id}', 'Admin\UserController@adupdate')->name('users.adupdate');
     Route::get('user/edit/{id}', 'Admin\UserController@adedit')->name('users.adedit');
+    Route::post('/pay', 'PaymentController@pay');
 });
