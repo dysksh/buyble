@@ -12,16 +12,16 @@
 </div>
 
 @if ($items == null)
-            <p>ISBN番号を入力してください。</p>
+            <p class="isbn-search">ISBN番号を入力してください。</p>
         @else (count($items) > 0)
-            <p>「{{ $keyword }}」の検索結果</p>
+            <p class="isbn-search">「{{ $keyword }}」の検索結果</p>
             <div class="search-result">
             @foreach ($items as $item)
             <h2>{{ $item['volumeInfo']['title']}}</h2>
                 @if (array_key_exists('imageLinks', $item['volumeInfo']))
                     <img src="{{ $item['volumeInfo']['imageLinks']['thumbnail']}}"><br>
                 @endif
-                                
+
                 @if (array_key_exists('description', $item['volumeInfo']))
                     著者：{{ $item['volumeInfo']['authors'][0]}}<br>
                 @endif
@@ -113,18 +113,18 @@
 <script>
     window.addEventListener('DOMContentLoaded',function(){
     $("[name='image']").on('change', function (e) {
-        
+
         var reader = new FileReader();
-        
+
         reader.onload = function (e) {
             $("#preview").attr('src', e.target.result);
         }
-    
-        reader.readAsDataURL(e.target.files[0]);   
-    
+
+        reader.readAsDataURL(e.target.files[0]);
+
     });
     });
-    
+
 </script>
 </div>
 @endsection
