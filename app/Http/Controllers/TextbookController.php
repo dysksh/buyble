@@ -112,6 +112,7 @@ class TextbookController extends Controller
             $target_path = "";
         } else {
             $fileName = "";
+            $target_path = "";
         }
 
         $textbook = new Textbook;
