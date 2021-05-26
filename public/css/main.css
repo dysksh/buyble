@@ -76,6 +76,7 @@ input[type="number"] {
 
 .alert-ul {
     margin-bottom: 0;
+    list-style: none;
 }
 
 .alert-li {
