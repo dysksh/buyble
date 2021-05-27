@@ -17,7 +17,7 @@
       <dt>ISBN番号</dt>
       <dd><input type="number" min="0" name="isbn_no" placeholder="ISBN番号" value="{{ request('isbn_no') }}"></dd>
       <dt>タイトル</dt>
-      <dd><textarea name="title" rows="3" cols="22" placeholder="タイトル" required>{{ request('title') }}</textarea></dd>
+      <dd><textarea name="title" rows="3" cols="22" placeholder="タイトル">{{ request('title') }}</textarea></dd>
       <dt>カテゴリ</dt>
       <dd>
          <select name="classification_id" id="">
