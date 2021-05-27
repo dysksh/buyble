@@ -85,7 +85,7 @@ let application = [];
    </dd>
    <dt>タイトル</dt>
    <dd>
-       <input type="text" name="title" id="title" value="{{ old('title', $textbook->title) }}" required>
+       <textarea name="title" id ="title" rows="3" cols="22" required>{{ old('title', $textbook->title) }}</textarea>
    </dd>
    <dt>著者名</dt>
    <dd>

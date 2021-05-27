@@ -20,7 +20,7 @@
     </p>
     <p>
         <label for="">住所</label><br>
-        <input type="text" name="address" value="{{ old('address') }}" required>
+        <textarea name="address" rows="3" cols="22" required>{{ old('address') }}</textarea>
     </p>
     <p>
         <label for="">電話番号</label><br>

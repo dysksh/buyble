@@ -8,7 +8,7 @@
                 <div class="card-header">教科書編集</div>
                     <div class="card-body">
                        @include('commons.flash')
-                      
+
                             <form action="{{ route('textbooks.update', $textbook->id) }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('put')
@@ -26,7 +26,7 @@
                                 タイトル
                                 </label>
                                 <div>
-                                <input type="text" name="title" value="{{ $textbook->title }}" required>
+                                <textarea name="title" rows="3" cols="22" required>{{ $textbook->title }}</textarea>
                                 </div>
                             </div>
 
@@ -43,14 +43,14 @@
                                 <label for="classification_id">
                                 カテゴリ
                                 </label>
-                                <div>  
+                                <div>
                                     <select name="classification_id" id=""required>
                                         @foreach ($classifications as $classification)
                                             <option value="{{ $classification->id }}"<?= $textbook->classification_id===$classification->id ? 'selected': "" ?>>{{ $classification->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                            </div> 
+                            </div>
 
                             <div class="form-group">
                                 <label for="condition_id">
@@ -72,7 +72,7 @@
                                 <div>
                                 <input type="text" name="price" min="50" value="{{ $textbook->price }}"required>
                                 </div>
-                            </div> 
+                            </div>
                             <div class="form-group">
                                 <label for="image">
                                 画像
@@ -99,16 +99,16 @@
 <script>
     window.addEventListener('DOMContentLoaded',function(){
     $("[name='image']").on('change', function (e) {
-        
+
         var reader = new FileReader();
-        
+
         reader.onload = function (e) {
             $("#preview").attr('src', e.target.result);
         }
-    
-        reader.readAsDataURL(e.target.files[0]);   
+
+        reader.readAsDataURL(e.target.files[0]);
         document.getElementById("noimage").style.display ="none";
-    
+
     });
     });
 </script>
