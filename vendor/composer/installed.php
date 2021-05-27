@@ -6,11 +6,20 @@
     'aliases' => 
     array (
     ),
-    'reference' => '16c318abfcd0a47f74210542877a68d0a871863f',
+    'reference' => 'f06bdccb6d0d9098888ba7a53232d8a170b07367',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
   array (
+    'aws/aws-sdk-php' => 
+    array (
+      'pretty_version' => '3.183.7',
+      'version' => '3.183.7.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'cf9c877e799c43e22d0e0cbc840e91d1885b13b6',
+    ),
     'cordoval/hamcrest-php' => 
     array (
       'replaced' => 
@@ -411,7 +420,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '16c318abfcd0a47f74210542877a68d0a871863f',
+      'reference' => 'f06bdccb6d0d9098888ba7a53232d8a170b07367',
     ),
     'laravel/tinker' => 
     array (
@@ -439,6 +448,24 @@
       array (
       ),
       'reference' => '9be3b16c877d477357c015cec057548cf9b2a14a',
+    ),
+    'league/flysystem-aws-s3-v3' => 
+    array (
+      'pretty_version' => '1.0.29',
+      'version' => '1.0.29.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4e25cc0582a36a786c31115e419c6e40498f6972',
+    ),
+    'league/flysystem-cached-adapter' => 
+    array (
+      'pretty_version' => '1.1.0',
+      'version' => '1.1.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd1925efb2207ac4be3ad0c40b8277175f99ffaff',
     ),
     'league/mime-type-detection' => 
     array (
@@ -475,6 +502,15 @@
       array (
       ),
       'reference' => '1cb1cde8e8dd0f70cc0fe51354a59acad9302084',
+    ),
+    'mtdowling/jmespath.php' => 
+    array (
+      'pretty_version' => '2.6.0',
+      'version' => '2.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '42dae2cbd13154083ca6d70099692fef8ca84bfb',
     ),
     'myclabs/deep-copy' => 
     array (
@@ -686,6 +722,15 @@
       array (
       ),
       'reference' => 'c73c6737305e779771147af66c96ca6a7ed8a741',
+    ),
+    'psr/cache' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd11b50ad223250cf17b86e38383413f5a6764bf8',
     ),
     'psr/container' => 
     array (

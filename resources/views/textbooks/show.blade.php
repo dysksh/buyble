@@ -25,7 +25,7 @@
               <dd>{{ $textbook->price }}</dd> 
               <dt>画像</dt>
               @if ($textbook->file_name && $textbook->file_path)
-                <img src="../../uploads/{{ $textbook->file_name }}" width="200px" height="auto">
+                <img src="{{ $textbook->file_path.$textbook->file_name }}" width="200px" height="auto">
               @elseif ($textbook->file_name && !$textbook->file_path)
                 <img src="{{ $textbook->file_name }}" width="200px" height="auto">
               @else
