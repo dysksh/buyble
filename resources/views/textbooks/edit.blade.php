@@ -70,7 +70,7 @@
                                 売値
                                 </label>
                                 <div>
-                                <input type="text" name="price" min="1" value="{{ $textbook->price }}"required>
+                                <input type="text" name="price" min="50" value="{{ $textbook->price }}"required>
                                 </div>
                             </div> 
                             <div class="form-group">

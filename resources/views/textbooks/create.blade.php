@@ -109,7 +109,7 @@ let application = [];
    </dd>
    <dt>売値</dt>
    <dd>
-       <input type="number" min="1" name="price" value="{{ old('price', $textbook->price) }}" required>
+       <input type="number" min="50" name="price" value="{{ old('price', $textbook->price) }}" required>
    </dd>
    <dt>画像</dt>
    <dd>

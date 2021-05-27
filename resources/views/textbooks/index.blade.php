@@ -32,7 +32,7 @@
       <dt>著者名</dt>
       <dd><input type="text" name="author" placeholder="著者名" value="{{ request('author') }}"></dd>
       <dt>売値</dt>
-      <dd><input type="number" min="1" name="price_min" placeholder="円" value="{{ request('price_min') }}">～<input type="number" min="1" name="price_max" placeholder="円" value="{{ request('price_max') }}"></dd>
+      <dd><input type="number" min="50" name="price_min" placeholder="円" value="{{ request('price_min') }}">～<input type="number" min="50" name="price_max" placeholder="円" value="{{ request('price_max') }}"></dd>
     </div>
       <P class="serch">
          <button type="submit">検索</button>
