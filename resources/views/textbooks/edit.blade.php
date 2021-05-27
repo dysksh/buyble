@@ -17,7 +17,7 @@
                                 ISBN番号
                                 </label>
                                 <div>
-                                <input type="number" name="isbn_no" min="0" value="{{ $textbook->isbn_no }}" required>
+                                <input type="text" name="isbn_no" min="0" value="{{ $textbook->isbn_no }}" required>
                                 </div>
                             </div>
 

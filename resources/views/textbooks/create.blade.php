@@ -10,7 +10,7 @@
 </div>
 <div class="search-area">
     <form action="{{ route('textbooks.create') }}" method="get">
-        ISBN番号:<input type="number" min="0" name="keyword" size="25" value="{{ $keyword }}">&nbsp;<input type="submit" value="検索">
+        ISBN番号:<input type="text" min="0" name="keyword" size="25" value="{{ $keyword }}">&nbsp;<input type="submit" value="検索">
     </form>
 </div>
 <script>
@@ -81,7 +81,7 @@ let application = [];
 <dl>
    <dt>ISBN番号</dt>
    <dd>
-       <input type="number" name="isbn_no" min="0" id="isbn_no" value="{{ old('isbn_no', $textbook->isbn_no) }}" required>
+       <input type="text" name="isbn_no" min="0" id="isbn_no" value="{{ old('isbn_no', $textbook->isbn_no) }}" required>
    </dd>
    <dt>タイトル</dt>
    <dd>

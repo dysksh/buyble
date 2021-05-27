@@ -15,7 +15,7 @@
    <dl>
      <div class="idx-src">
       <dt>ISBN番号</dt>
-      <dd><input type="number" min="0" name="isbn_no" placeholder="ISBN番号" value="{{ request('isbn_no') }}"></dd>
+      <dd><input type="text" min="0" name="isbn_no" placeholder="ISBN番号" value="{{ request('isbn_no') }}"></dd>
       <dt>タイトル</dt>
       <dd><textarea name="title" rows="3" cols="22" placeholder="タイトル">{{ request('title') }}</textarea></dd>
       <dt>カテゴリ</dt>

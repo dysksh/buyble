@@ -50,7 +50,7 @@ class TextbookController extends Controller
         $textbook = new TextBook;
         $this->authorize($textbook);
         $this->validate($request, [
-            'keyword' => 'nullable|digits:10'
+            'keyword' => 'nullable|size:10'
         ]);
         $classifications = \App\Classification::all();
         $conditions = \App\Condition::all();
@@ -107,7 +107,7 @@ class TextbookController extends Controller
 		// ]);
 
         $this->validate($request, [
-            'isbn_no' => 'required|digits:10',
+            'isbn_no' => 'required|size:10',
             'title' => 'required|max:50',
             'author' => 'required|max:50',
             'classification_id' => 'required|numeric|max:11|min:1',
@@ -185,7 +185,7 @@ class TextbookController extends Controller
     {
         $this->authorize($textbook);
         $this->validate($request, [
-            'isbn_no' => 'required|digits:10',
+            'isbn_no' => 'required|size:10',
             'title' => 'required|max:50',
             'author' => 'required|max:50',
             'classification_id' => 'required|numeric|max:11|min:1',
