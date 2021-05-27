@@ -6,6 +6,8 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth; //追加
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -57,14 +59,19 @@ class UserController extends Controller
         $user_form = $request->all();
         // 管理者でログインしていなければ更新
         if (Auth::id() !== 1) {
+            $user = Auth::user();
             $this->validate($request, [
                 'name' => 'required|max:20',
                 'postal' => 'required|digits:7',
                 'address' => 'required|max:150',
                 'phone' => 'required|digits_between:10, 15',
-                'email' => 'required|email:strict,dns|max:50|unique:users'
+                'email' => 'required|email:strict,dns|max:50'
             ]);
-            $user = Auth::user();
+            if ($user->email !== $request->email) {
+                $this->validate($request, [
+                    'email' => 'required|email:strict,dns|max:50|unique:users'
+                ]);
+            }
             //不要な「_token」の削除
             unset($user_form['_token']);
             //保存
@@ -85,8 +92,13 @@ class UserController extends Controller
                 'postal' => 'required|digits:7',
                 'address' => 'required|max:150',
                 'phone' => 'required|digits_between:10, 15',
-                'email' => 'required|email:strict,dns|max:50|unique:users'
+                'email' => 'required|email:strict,dns|max:50'
             ]);
+            if ($user->email !== $request->email) {
+                $this->validate($request, [
+                    'email' => 'required|email:strict,dns|max:50|unique:users'
+                ]);
+            }
             $user_form = $request->all();
             //不要な「_token」の削除
             unset($user_form['_token']);
