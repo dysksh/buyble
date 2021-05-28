@@ -119,12 +119,11 @@ class TextbookController extends Controller
 
         $textbook = new Textbook;
 
-        if ($file = $request->image) {
+        if ($file = $request->file('image')) {
             // $fileName = time() . $file->getClientOriginalName();
             // $target_path = public_path('uploads/');
             // $file->move($target_path, $fileName);
-            $image = $request->file('image');
-            $fileName = Storage::disk('s3')->putFile('/', $image, 'public');
+            $fileName = Storage::disk('s3')->putFile('/', $file, 'public');
             $target_path = "https://".env('AWS_BUCKET').".s3-ap-northeast-1.amazonaws.com/";
         } elseif ($file = $request->google_image) {
             $fileName = $request->google_image;
@@ -199,7 +198,7 @@ class TextbookController extends Controller
             'file_name' => 'nullable',
             'file_path'=> 'nullable'
         ]);
-        if ($file = $request->image) {
+        if ($file = $request->file('image')) {
             // \File::delete($textbook->file_path . $textbook->file_name);
             // $fileName = time() . $file->getClientOriginalName();
             // $target_path = public_path('uploads/');
@@ -208,8 +207,7 @@ class TextbookController extends Controller
             $file_name = $textbook->file_name;
             $s3_delete = Storage::disk('s3')->delete($file_name);
 
-            $image = $request->file('image');
-            $fileName = Storage::disk('s3')->putFile('/', $image, 'public');
+            $fileName = Storage::disk('s3')->putFile('/', $file, 'public');
             $target_path = "https://".env('AWS_BUCKET').".s3-ap-northeast-1.amazonaws.com/";
         } else {
             $fileName = "";
